@@ -1,0 +1,29 @@
+.Header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100vw;
+  height: 20vh;
+  position: relative;
+
+
+}
+
+.Title {
+ text-align: center;
+flex:1 0 auto;
+font-size: 4.5rem;
+font-family: 'Roboto';
+color: #A5C6BA;
+
+
+}
+
+.Buttons {
+display: flex;
+flex-wrap: nowrap;
+position: absolute;
+right: 10vw;
+  
+}

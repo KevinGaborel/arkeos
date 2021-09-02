@@ -1,0 +1,15 @@
+.Marketplace_selector {
+ background-color: #a5c6ba;
+  border-radius: .3rem;
+  color: #f9f7ed;
+  border: none;
+  padding: 0.2rem;
+  font-size: 0.8rem;
+  height: 2rem;
+  font-weight: bold;
+  box-shadow: 0px 1px 3px 1px rgba(107,102,97,0.7);
+}
+
+.Marketplace_selector:focus {
+  outline: none;
+}

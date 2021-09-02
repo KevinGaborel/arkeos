@@ -1,0 +1,77 @@
+.profil-main-container {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 50vw;
+  
+  border-radius: 1em;
+  background-image: linear-gradient(circle, rgb(165, 198, 186, 0.5), rgb(249, 247, 237, 0.5));
+  box-shadow: 3px 3px 8px 2px rgba(107,102,97,0.7);
+  font-family: 'Roboto';
+}
+
+.profil-pseudo {
+  font-weight: bold;
+  font-size: 2.3rem;
+  color: #A5C6BA;
+ 
+}
+
+.profil-infos {
+
+font-size: 1.3rem;
+margin: 1rem 0 2rem 0;
+color: #F9F7ED;
+
+
+}
+
+.profil-location {
+  font-size: 1.3rem;
+margin: 1rem;
+color: #F9F7ED;
+}
+
+.img-container {
+  margin: 2rem;
+}
+
+.img-container img{
+  object-fit: cover;
+
+}
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 80%;
+  padding: 0.5rem;
+  background: rgba(107,102,97,0.7);
+  box-shadow: 0px 2px 3px 0.5px rgba(107,102,97,0.7);
+  margin: 1rem 1rem 1rem 0;
+  border-radius: 0.5rem;
+  transition: 0.5s;
+  color: #F9F7ED;
+  
+}
+
+.profil-important-infos {
+  background: rgba(107,102,97,0.7);
+width: 40vh;
+border-radius: 0.3rem;
+padding: 0.5rem;
+}
+
+.profil-user-container {
+margin: 1rem;
+}
+
+.Profil-category {
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: #A5C6BA;
+  margin: 1rem 0 1rem 0;
+}

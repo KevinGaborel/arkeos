@@ -1,0 +1,139 @@
+.Sell_item_modifier_form {
+  display: flex;
+  flex-direction: column;
+  width: 40rem;
+  color: #F9F7ED;
+  font-family: 'Roboto';
+  font-weight: bold;
+  align-items: center;
+  margin-top: 8rem;
+
+}
+
+.Sell_item_modifier_form label {
+  margin: 1rem;
+  width: 80%;
+ 
+};
+
+.Sell_item_modifier_form select {
+  font-size: 1rem;
+  color: #6B6661;
+  border: none
+};
+
+.Sell_item_modifier_form select:focus {
+   
+  outline: none
+};
+
+.Sell_item_modifier_form select option{
+  font-size: 1rem;
+  color: #6B6661;
+  
+};
+
+#Sell_item_modifier_pet_category {
+  width: 50%;
+  margin: 1rem;
+  background:rgb(249, 247, 237,0.5);
+  color: #6B6661;
+}
+
+.Sell_item_modifier_input {
+  border-radius: 0.2rem;
+  color: #6B6661;
+background: rgb(249, 247, 237,0.5);
+border: none;
+height: 1.5rem;
+font-size: 1rem;
+width: 80%
+
+}
+
+.Sell_item_modifier_form textarea {
+  border-radius: 0.2rem;
+  color: #6B6661;
+background: rgb(249, 247, 237,0.5);
+border: none;
+font-size: 1rem;
+width: 80%;
+font-weight: normal;
+}
+
+.SpecialLabel {
+  margin: 0.5em 0 0.5em -0.3em;
+ 
+}
+
+input #NC {
+  
+  border: none;
+  height: 1rem;
+  
+  
+  }
+
+.Radio {
+  display: flex;
+  flex-wrap: nowrap;
+  text-align: center;
+  vertical-align: middle;
+  margin: 0.5rem 0 0 0;
+  width: 5rem;
+  justify-content:center;
+  align-items: center;
+}
+
+.Radio_label {
+  
+  color: #F9F7ED;
+}
+
+#img {
+  display: none
+}
+
+#content {
+  resize: none;
+  
+}
+
+.Sell_item_modifier_button {
+  border-radius: .2rem;
+    color: #6b6661;
+    font-weight: bold;
+    font-size: 1rem;
+    width: 30%;
+    height: 2rem;
+    cursor: pointer;
+ margin-top: 1rem;
+ box-shadow: 0px 1px 5px 0px #6B6661;
+ border: none;
+}
+
+.Sell_item_modifier_button:hover {
+   
+  background: rgba(98, 63, 138, 0.5);
+  color: #F9F7ED;
+  transition: 0.5s;
+}
+
+.Sell_item_modifier_button_2 {
+  background: rgb(107, 102, 97, 0.7);
+  color: #F9F7ED;
+  transition: 0.5s;
+}
+
+.Sell_item_modifier_button_2:hover {
+  background: rgb(107, 102, 97);
+  color: #F9F7ED;
+  transition: 0.5s;
+}
+
+.Sell_item_modifier_icon {
+  display: flex;
+
+  justify-content: center;
+  
+}

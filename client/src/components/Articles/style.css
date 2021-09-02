@@ -1,0 +1,12 @@
+.articles {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80vw;
+  
+  align-items: center;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin: auto;
+  
+ 
+}

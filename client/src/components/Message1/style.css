@@ -1,0 +1,27 @@
+
+.Message_container {
+  display: flex;
+  
+  flex-wrap: wrap;
+}
+
+.Answer_date {
+  margin: 2rem;
+  width: 80%;
+  text-align: right;
+  font-family: 'Roboto';
+  font-weight: bold;
+  font-size: 1rem;
+  color: #F9F7ED;
+}
+ .Answer_content {
+   display: flex;
+   margin-left: 1rem;
+   text-align: right;
+  font-family: 'Roboto';
+  word-break: break-all;
+  font-size: 1rem;
+  color: #F9F7ED;
+  margin: 0.5rem;
+ }
+

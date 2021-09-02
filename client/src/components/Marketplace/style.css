@@ -1,0 +1,23 @@
+
+.markeplace-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  
+}
+
+.Select {
+  height: 30px;
+}
+
+.sellItems {
+  display: flex;
+    flex-direction: column;
+}
+
+.Selectors {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+}

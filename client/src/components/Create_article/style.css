@@ -1,0 +1,104 @@
+.Create_article_form {
+  display: flex;
+  flex-direction: column;
+  width: 40rem;
+  color: #F9F7ED;
+  font-family: 'Roboto';
+  font-weight: bold;
+  align-items: center;
+  
+}
+
+.Create_article_form label {
+    margin: 1rem;
+    width: 80%;
+   
+  };
+
+  #Create_article_image_icon {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .Create_article_form select {
+    font-size: 1rem;
+    color: #6B6661;
+    border: none;
+    height: 1.5rem;
+  };
+
+  .Create_article_form select:focus {
+   
+    outline: none
+  };
+
+  .Create_article_form select option{
+    font-size: 1rem;
+    color: #6B6661;
+    
+  };
+
+  
+
+  .Create_article_form input {
+    border-radius: 0.2rem;
+    color: #6B6661;
+  background: rgb(249, 247, 237,0.5);
+  border: none;
+  height: 1.5rem;
+  font-size: 1rem;
+  width: 80%
+
+  }
+
+  .Create_article_form textarea {
+    border-radius: 0.2rem;
+    color: #6B6661;
+  background: rgb(249, 247, 237,0.5);
+  border: none;
+  font-size: 1rem;
+  width: 80%;
+  font-weight: normal;
+  }
+
+  #Create_article_submit {
+    border-radius: .2rem;
+    color: #6b6661;
+    font-weight: bold;
+    font-size: 1rem;
+    width: 30%;
+    height: 2rem;
+    cursor: pointer;
+ 
+ box-shadow: 0px 1px 5px 0px #6B6661;
+ border: none;
+
+  }
+
+  #Create_article_submit:hover {
+   
+    background: rgba(98, 63, 138, 0.5);
+    color: #F9F7ED;
+    transition: 0.5s;
+  }
+
+#Create_article_body {
+  resize: none;
+  width: 100%;
+}
+
+.Create_article_selectors{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  
+}
+
+#Create_article_pet_category , #Create_article_theme {
+width: 50%;
+border-radius: 0.2rem;
+margin-bottom: 0.5rem;
+color: #6B6661;
+  background:rgb(249, 247, 237,0.5);
+}

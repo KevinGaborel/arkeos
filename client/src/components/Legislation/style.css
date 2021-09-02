@@ -1,0 +1,123 @@
+.Law_page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  font-family: 'Roboto';
+}
+
+.Law_description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #6B6661;
+ 
+  background-color:#6B6661;
+  width: 100%;
+text-align: center;
+  padding: 2rem;
+}
+
+.Law_container{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.Law_card {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #6B6661;
+  box-shadow: 3px 3px 10px 3px rgba(107,102,97,0.7);
+  margin: 1rem;
+height: 45vh;
+margin-top: 2rem;
+  }
+
+  .Law_card:hover {
+    filter: invert(75%);
+    transition: 0.5s;
+  }
+  .Law_card_picture {
+    width: 100%;
+  }
+
+  .Law_picture {
+    border-radius: 0.5rem 0.5rem 0 0;
+    width: 100%;
+  }
+
+  .Law_card_body {
+    margin: 1rem;
+    color: #F9F7ED;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+  }
+
+
+  .L1 {
+    font-size: 1.5rem;
+    color: #F9F7ED;
+    font-weight: bold;
+    margin: 0 0 1rem 0;
+  }
+
+  .L2 {
+    font-size: 1rem;
+    margin: 1rem;
+    color: #F9F7ED;
+  }
+
+  .L3 {
+    font-size: 1.3rem;
+    margin: 1rem;
+    color: #A5C6BA;
+    font-weight: bold;
+  }
+
+  .L4 {
+    color: #F9F7ED;
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+  }
+
+  .L5 {
+    margin: 1rem 0 0.5rem 0;
+  }
+
+  .L6 {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+
+  .L7 {
+    font-size: 1.5rem;
+    border: 3px solid dotted #A5C6BA;
+    padding: 1rem;
+  }
+
+  .Law_article_body {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+  }
+
+  

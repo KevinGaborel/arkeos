@@ -1,0 +1,85 @@
+
+.Profil_modifier_form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 20rem;
+  
+  color: #F9F7ED;
+  font-family: 'Roboto';
+  font-weight: bold;
+  align-items: center;
+  
+}
+
+.Profil_modifier_form label {
+    margin: 1rem;
+    width: 80%;
+   
+  };
+
+  #Modify_article_image_icon {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  
+
+  .Profil_modifier_form textarea {
+    border-radius: 0.2rem;
+    color: #6B6661;
+  background: rgb(249, 247, 237,0.5);
+  border: none;
+  font-size: 1rem;
+  width: 80%;
+  height: 10rem;
+  font-weight: normal;
+  }
+
+  .Profil_modifier_form_submit {
+    border-radius: .2rem;
+    color: #6b6661;
+    font-weight: bold;
+    font-size: 1rem;
+    width: 40%;
+    height: 2rem;
+    cursor: pointer;
+ 
+ box-shadow: 0px 1px 5px 0px #6B6661;
+ border: none;
+
+  }
+
+  .Profil_modifier_form_submit:hover {
+   
+    background: rgb(172, 111, 240, 0.5);
+    color: #F9F7ED;
+    transition: 0.5s;
+  }
+
+
+.Modify_article_selectors{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  
+}
+
+.Modify_article input {
+  border-radius: 0.2rem;
+  color: #6B6661;
+background: rgb(249, 247, 237,0.5);
+border: none;
+height: 1.5rem;
+font-size: 1rem;
+width: 80%;
+margin: 1rem;
+
+}
+
+#Profil_modifier_image_icon {
+  display: flex;
+  justify-content: center;
+
+}

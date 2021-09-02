@@ -1,0 +1,14 @@
+.Contact_member {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  min-width: 8rem;
+  height: 2rem;
+  background-color: #A5C6BA;
+  border-radius: 3px;
+  color: #F9F7ED;
+  box-shadow: 2px 2px 6px 1px rgba(107,102,97,0.7);
+}
+
+
