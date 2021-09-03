@@ -70,13 +70,7 @@ class CoreModel {
 
         result = await client.query(preparedQuery.query, preparedQuery.value);
 
-        const instanceList = [];
-
-        for (const row of result.rows) {
-            instanceList.push(new this(row));
-        }
-
-        return instanceList;
+        return result.rows;
     };
 
     static async findByPk(id) {

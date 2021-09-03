@@ -17,13 +17,11 @@ exports.getAllArticles = async (request, response, next) => {
       return next();
     }
 
-    //console.log(articles);
-
     for (const article of articles) {
-      const content = article.dataValues.content.split(" ");
+      const content = article.content.split(" ");
       content.length = 40;
       result = content.join(" ");
-      article.dataValues.content = result;
+      article.content = result;
     }
 
     response.json(articles);

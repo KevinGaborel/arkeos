@@ -21,22 +21,24 @@ class ArticleViewModel extends CoreModel {
 
     static async showArticle(id) {
         try {
-            const article = await client.query(`SELECT * FROM "article_without_breeder" WHERE "id"=$1`, [id]);
+            
+            //Récupération des commentaires et des photos en plus de l'article
+           const result = await client.query(`SELECT article_without_breeder.*,
+           ARRAY_AGG(DISTINCT "comment"."content") as "comment",
+           ARRAY_AGG(DISTINCT "comment"."author_id") as "author",
+           ARRAY_AGG(DISTINCT "photo"."url_picture") as "photo"
+           FROM "article_without_breeder" 
+           FULL JOIN "comment" ON "comment"."article_id" = "article_without_breeder"."id"
+           FULL JOIN "photo" ON "photo"."article_id" = "article_without_breeder"."id"
+           WHERE "article_without_breeder"."id"=$1
+           GROUP BY "article_without_breeder"."id", "article_without_breeder"."title", "article_without_breeder"."content", 
+           "article_without_breeder"."url_picture", "article_without_breeder"."created_at", "article_without_breeder"."updated_at",
+           "article_without_breeder"."author", "article_without_breeder"."author_id", "article_without_breeder"."author_picture",
+           "article_without_breeder"."theme_name", "article_without_breeder"."theme_color", "article_without_breeder"."category_name",
+           "article_without_breeder"."rating"
+           `, [id]);
 
-            const photoArticle = await client.query(`SELECT "photo"."location"
-            FROM "photo"
-            JOIN "article" ON "article"."id" = "photo"."article_id"
-            WHERE "article_id" = $1`, [id]);
-
-            const comment = await client.query(`SELECT "comment"."content", "comment"."created_at", 
-                "user"."username" AS "author", "user"."profile_picture" AS "avatar"
-                FROM "comment"
-                JOIN "user" ON "user"."id" = "comment"."author_id"
-                WHERE "article_id" = $1
-                ORDER BY "created_at" ASC`, [id]);
-
-            const result = [article.rows[0], comment.rows, photoArticle.rows];
-            return result;
+            return result.rows[0];
         } catch (error) {
             console.trace(error);
         }
