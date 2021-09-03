@@ -1,34 +1,17 @@
 const MarketplaceModel = require("../models/marketplaceModel");
 const MarketplaceViewModel = require("../models/marketplaceViewModel");
 
+const { getOptionsSearch } = require('../utils');
+
+
 exports.getAllMarket = async (request, response, next) => {
   try {
     const data = request.query;
 
-    console.log(data);
-
-    let options = {};
-
-    //todoo reste a coder le traitement de plusieurs categories
-    if (data.category !== undefined && data.category !== "false") {
-      options.category = data.category;
-    }
-
-    if (data.date !== undefined && data.date !== "false") {
-      options.orderByFields = '"created_at"';
-      options.order = data.date;
-    }
-
-    if (data.search !== undefined) {
-      options.search = data.search;
-    }
-
-    // nombre d'article à afficher pour le moment
-    options.nbArticles = 20;
+    let options = getOptionsSearch(data);
 
     let articles;
-    console.log(options);
-    console.log(data);
+    
     if (options.order === "DESC") {
       articles = await MarketplaceViewModel.findDesc(options);
     } else {
