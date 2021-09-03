@@ -56,7 +56,8 @@ exports.addArticle = async (request, response, next) => {
   try {
     //todoo ajouter de la sécurité
 
-    const data = request.body;
+    const data = request.body.data;
+    
     // Il me faut l'auteur, le titre de l'article, le contenu, le thème et ou catégorie
 
     /*
@@ -67,14 +68,13 @@ exports.addArticle = async (request, response, next) => {
         data.url_picture
         */
 
-    data.data.author_id = request.user;
+    data.author_id = request.user;
 
-    console.log(data);
 
-    const article = await ArticleModel.addArticle(data.data);
+    const article = await ArticleModel.addArticle(data);
 
     if (!article) {
-      return next();
+      return error;
     }
 
     response.status(200).json({ article });
