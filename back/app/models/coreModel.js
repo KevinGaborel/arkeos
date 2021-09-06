@@ -18,105 +18,59 @@ class CoreModel {
      */
     set data(values) {
         for (const field of this.contructor.fields) {
-            // values.birthdate ?
             if (values[field]) {
-                //this.dataValues.birthdate = values.birthdate
                 this.dataValues[field] = values[field];
             }
         }
     }
 
-    static async findAsc(options) {
-        console.log("dans le asc");
+    static async find(options) {
         let result;
-        if (options.search === undefined){
 
-            if (options.category === undefined && options.theme === undefined){
-                // si il n'y a ni filtre de catégories, ni de themes
-                result = await client.query(`SELECT * FROM ${this.tableName} ORDER BY "created_at" DESC LIMIT $1`, [options.nbArticles]);
-            } else if (options.category === undefined && options.theme !== undefined){
-                // si il y a le filtre de theme
-                result = await client.query(`SELECT * FROM ${this.tableName} WHERE theme_name=$1 ORDER BY "created_at" DESC LIMIT $2`, [options.theme, options.nbArticles]);
-            } else if (options.category !== undefined && options.theme === undefined){
-                // si il ya le filtre de categories
-                result = await client.query(`SELECT * FROM ${this.tableName} WHERE category_name=$1 ORDER BY "created_at" DESC LIMIT $2`, [options.category, options.nbArticles]);
-            } else if (options.category !== undefined && options.theme !== undefined){
-                // si il y a les deux filtres
-                result = await client.query(`SELECT * FROM ${this.tableName} WHERE category_name=$1 AND theme_name=$2 ORDER BY "created_at" DESC LIMIT $3`, [options.category , options.theme, options.nbArticles]);
-            }
-
-        } else {
+        if (options.search){
             options.search2 = firstCharacterUpperCase(options.search);
-            if (options.category === undefined && options.theme === undefined){
-                // si il n'y a ni filtre de catégories, ni de themes, mais une recherche de l'user
-                result = await client.query(`SELECT * FROM ${this.tableName} WHERE "title" LIKE '%' || $1 || '%' OR "title" LIKE '%' || $2 || '%' ORDER BY $3 ASC LIMIT $4`, [options.search, options.search2, options.orderByFields, options.nbArticles]);
-            } else if (options.category === undefined && options.theme !== undefined){
-                // si il y a le filtre de theme
-                result = await client.query(`SELECT * FROM ${this.tableName} WHERE theme_name=$1 AND LIKE '%' || $2 || '%' OR "title" LIKE '%' || $3 || '%' ORDER BY $4 ASC LIMIT $5`, [options.theme , options.search, options.search2, options.orderByFields, options.nbArticles]);
-            } else if (options.category !== undefined && options.theme === undefined){
-                // si il ya le filtre de categories
-                result = await client.query(`SELECT * FROM ${this.tableName} WHERE category_name=$1 AND LIKE '%' || $2 || '%' OR "title" LIKE '%' || $3 || '%' ORDER BY $5 ASC LIMIT $5`, [options.category , options.search, options.search2, options.orderByFields, options.nbArticles]);
-            } else if (options.category !== undefined && options.theme !== undefined){
-                // si il y a les deux filtres
-                result = await client.query(`SELECT * FROM ${this.tableName} WHERE category_name=$1 AND theme_name=$2 AND LIKE '%' || $3 || '%' OR "title" LIKE '%' || $4 || '%' ORDER BY $5 ASC LIMIT $6`, [options.category , options.theme, options.search, options.search2, options.orderByFields, options.nbArticles]);
-            }
-
-        }
-        const instanceList = [];
-
-        for (const row of result.rows) {
-            instanceList.push(new this(row));
         }
 
-        return instanceList;
-    };
+        let preparedQuery = {
+            query : options.search ? 
+                `SELECT * FROM ${this.tableName} WHERE "title" LIKE '%' || $1 || '%' OR "title" LIKE '%' || $2 || '%' ORDER BY $3 ASC LIMIT $4`
+                : `SELECT * FROM ${this.tableName} ORDER BY $1 DESC LIMIT $2`,
 
-
-    static async findDesc(options) {
-        console.log("dans le desc");
-        console.log(options.orderByFields, options.order);
-
-        let result;
-        if (options.search === undefined){
-
-            if (options.category === undefined && options.theme === undefined){
-                // si il n'y a ni filtre de catégories, ni de themes
-                result = await client.query(`SELECT * FROM ${this.tableName} ORDER BY $1 DESC LIMIT $2`, [options.orderByFields, options.nbArticles]);
-            } else if (options.category === undefined && options.theme !== undefined){
-                // si il y a le filtre de theme
-                result = await client.query(`SELECT * FROM ${this.tableName} WHERE theme_name=$1 ORDER BY $2 DESC LIMIT $3`, [options.theme ,options.orderByFields, options.nbArticles]);
-            } else if (options.category !== undefined && options.theme === undefined){
-                // si il ya le filtre de categories
-                result = await client.query(`SELECT * FROM ${this.tableName} WHERE category_name=$1 ORDER BY $2 DESC LIMIT $3`, [options.category ,options.orderByFields, options.nbArticles]);
-            } else if (options.category !== undefined && options.theme !== undefined){
-                // si il y a les deux filtres
-                result = await client.query(`SELECT * FROM ${this.tableName} WHERE category_name=$1 AND theme_name=$2 ORDER BY $3 DESC LIMIT $4`, [options.category , options.theme, options.orderByFields, options.nbArticles]);
-            }
-        } else {
-            options.search2 = firstCharacterUpperCase(options.search);
-            if (options.category === undefined && options.theme === undefined){
-                // si il n'y a ni filtre de catégories, ni de themes, mais une recherche de l'user
-                result = await client.query(`SELECT * FROM ${this.tableName} WHERE "title" LIKE '%' || $1 || '%' OR "title" LIKE '%' || $2 || '%' ORDER BY $3 DESC LIMIT $4`, [options.search, options.search2, options.orderByFields, options.nbArticles]);
-            } else if (options.category === undefined && options.theme !== undefined){
-                // si il y a le filtre de theme
-                result = await client.query(`SELECT * FROM ${this.tableName} WHERE theme_name=$1 AND LIKE '%' || $2 || '%' OR "title" LIKE '%' || $3 || '%' ORDER BY $4 DESC LIMIT $5`, [options.theme , options.search, options.search2, options.orderByFields, options.nbArticles]);
-            } else if (options.category !== undefined && options.theme === undefined){
-                // si il ya le filtre de categories
-                result = await client.query(`SELECT * FROM ${this.tableName} WHERE category_name=$1 AND LIKE '%' || $2 || '%' OR "title" LIKE '%' || $3 || '%' ORDER BY $5 DESC LIMIT $5`, [options.category , options.search, options.search2, options.orderByFields, options.nbArticles]);
-            } else if (options.category !== undefined && options.theme !== undefined){
-                // si il y a les deux filtres
-                result = await client.query(`SELECT * FROM ${this.tableName} WHERE category_name=$1 AND theme_name=$2 AND LIKE '%' || $3 || '%' OR "title" LIKE '%' || $4 || '%' ORDER BY $5 DESC LIMIT $6`, [options.category , options.theme, options.search, options.search2, options.orderByFields, options.nbArticles]);
-            }
-
+            value: options.search ?
+                [options.search, options.search2, options.orderByFields, options.nbArticles]
+                : [options.orderByFields, options.nbArticles]
+        };
+        
+        if (!options.category && options.theme && !options.search){
+            // si il y a le filtre de theme
+            preparedQuery.query = `SELECT * FROM ${this.tableName} WHERE theme_name=$1 ORDER BY $2 DESC LIMIT $3`;
+            preparedQuery.value = [options.theme, options.orderByFields, options.nbArticles];
+        } else if (!options.category && options.theme && options.search){
+            preparedQuery.query = `SELECT * FROM ${this.tableName} WHERE theme_name=$1 AND "title" LIKE '%' || $2 || '%' OR "title" LIKE '%' || $3 || '%' ORDER BY $4 ASC LIMIT $5`;
+            preparedQuery.value = [options.theme, options.search, options.search2, options.orderByFields, options.nbArticles];
         }
 
-        const instanceList = [];
-
-        for (const row of result.rows) {
-            instanceList.push(new this(row));
+        else if (options.category && !options.theme && !options.search){
+            // si il ya le filtre de categories
+            preparedQuery.query = `SELECT * FROM ${this.tableName} WHERE category_name=$1 ORDER BY $2 DESC LIMIT $3`;
+            preparedQuery.value =  [options.category, options.orderByFields, options.nbArticles];
+        } else if (options.category && !options.theme && options.search){
+            preparedQuery.query = `SELECT * FROM ${this.tableName} WHERE category_name=$1 AND "title" LIKE '%' || $2 || '%' OR "title" LIKE '%' || $3 || '%' ORDER BY $4 ASC LIMIT $5`;
+            preparedQuery.value = [options.category, options.search, options.search2, options.orderByFields, options.nbArticles];
         }
 
-        return instanceList;
+        else if (options.category && options.theme && !options.search){
+            // si il y a les deux filtres
+            preparedQuery.query = `SELECT * FROM ${this.tableName} WHERE category_name=$1 AND theme_name=$2 ORDER BY $3 DESC LIMIT $4`;
+            preparedQuery.value =  [options.category , options.theme, options.orderByFields, options.nbArticles];
+        }else if (options.category && options.theme && options.search){
+            preparedQuery.query = `SELECT * FROM ${this.tableName} WHERE category_name=$1 AND theme_name=$2 AND "title" LIKE '%' || $3 || '%' OR "title" LIKE '%' || $4 || '%' ORDER BY $5 ASC LIMIT $6`;
+            preparedQuery.value = [options.category, options.theme, options.search, options.search2, options.orderByFields, options.nbArticles];
+        }
+
+        result = await client.query(preparedQuery.query, preparedQuery.value);
+
+        return result.rows;
     };
 
     static async findByPk(id) {
