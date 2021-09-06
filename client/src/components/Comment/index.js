@@ -8,12 +8,12 @@ const Comment = (props) => {
       <div className="Profil_picture_container_answer">
         <img
           className="Profil_picture_answer"
-          src={"http://localhost:3000/image/" + props.data.avatar}
+          src={"http://localhost:3000/image/" + props.data.profil_picture}
           alt="Image de profil"
         ></img>
       </div>
       <p className="Answer_pseudo">{props.data.author}</p>
-      <p className="Answer"> {props.data.content}</p>
+      <p className="Answer"> {props.data.comment}</p>
     </div>
   );
 };

@@ -15,14 +15,6 @@ exports.showImage = async (request, response, next) => {
 
         return response.sendFile(fullfilepath);
 
-
-        //const photo = await PhotoModel.showImage(filename);
-
-        //console.log(photo);
-
-        //response.json('/image/:filename');
-       
-
     } catch (error) {
         console.trace(error);
         response.status(500).json({ error: `Server error, please contact an administrator` });

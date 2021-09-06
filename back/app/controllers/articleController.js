@@ -3,76 +3,25 @@ const ArticleViewModel = require("../models/articleViewModel");
 const CommentModel = require("../models/commentModel");
 const RatingArticleModel = require("../models/ratingArticleModel");
 
+const { getOptionsSearch } = require('../utils');
+
 exports.getAllArticles = async (request, response, next) => {
   try {
     const data = request.query;
 
-    console.log(data);
+    let options = getOptionsSearch(data);
 
-    let options = {};
-
-    //todoo reste a coder le traitement de plusieurs categories
-    if (data.category !== undefined && data.category !== "false") {
-      console.log("coucou");
-      options.category = data.category;
-    }
-
-    //todoo reste a coder le traitement de plusieurs themes
-    if (data.theme !== undefined && data.theme !== "false") {
-      options.theme = data.theme;
-    }
-    if (
-      data.date !== undefined &&
-      data.date !== "false" &&
-      (data.rating === undefined || data.rating === "false")
-    ) {
-      options.orderByFields = '"created_at"';
-      options.order = data.date;
-    }
-    if (
-      data.rating !== undefined &&
-      data.rating !== "false" &&
-      (data.date === undefined || data.date === "false")
-    ) {
-      options.orderByFields = '"rating"';
-      options.order = data.rating;
-    }
-
-    if (data.search !== undefined) {
-      options.search = data.search;
-    }
-
-    if (
-      (data.rating === "false" && data.date === "false") ||
-      (data.rating === undefined && data.date === undefined)
-    ) {
-      options.orderByFields = '"created_at"';
-      options.order = data.date;
-    }
-
-    // nombre d'article à afficher pour le moment
-    options.nbArticles = 20;
-
-    console.log("c'est les options", options);
-
-    let articles;
-
-    if (options.order === "DESC") {
-      articles = await ArticleViewModel.findDesc(options);
-    } else {
-      articles = await ArticleViewModel.findAsc(options);
-    }
+    const articles = await ArticleViewModel.find(options);
 
     if (!articles) {
       return next();
     }
 
     for (const article of articles) {
-      const content = article.dataValues.content.split(" ");
+      const content = article.content.split(" ");
       content.length = 40;
       result = content.join(" ");
-      console.log(result);
-      article.dataValues.content = result;
+      article.content = result;
     }
 
     response.json(articles);
@@ -107,7 +56,8 @@ exports.addArticle = async (request, response, next) => {
   try {
     //todoo ajouter de la sécurité
 
-    const data = request.body;
+    const data = request.body.data;
+    
     // Il me faut l'auteur, le titre de l'article, le contenu, le thème et ou catégorie
 
     /*
@@ -118,14 +68,13 @@ exports.addArticle = async (request, response, next) => {
         data.url_picture
         */
 
-    data.data.author_id = request.user;
+    data.author_id = request.user;
 
-    console.log(data);
 
-    const article = await ArticleModel.addArticle(data.data);
+    const article = await ArticleModel.addArticle(data);
 
     if (!article) {
-      return next();
+      return error;
     }
 
     response.status(200).json({ article });
@@ -139,7 +88,6 @@ exports.addArticle = async (request, response, next) => {
 
 exports.deleteArticle = async (request, response, next) => {
   try {
-    //todoo ajouter de la sécurité
 
     const id_article = parseInt(request.params.id, 10);
 
@@ -179,8 +127,6 @@ exports.updateArticle = async (request, response, next) => {
     }
 
     const newValue = request.body;
-
-    console.log("les données front", newValue);
 
     for (const data in articleCurrent.dataValues) {
       if (articleCurrent.dataValues[data]) {

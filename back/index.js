@@ -5,20 +5,6 @@ const app = express();
 const cors = require("cors");
 const morgan = require('morgan');
 
-
-//Socket.io
-const http = require('http');
-const server = http.createServer(app);
-//const { Server } = require("socket.io");
-//const io = new Server(server);
-
-/*
-app.set('view engine', 'ejs');
-app.set('views', './app/views');
-app.use(express.static('./app/statics'));
-*/
-
-
 // gestion des tokens
 const jwt = require("jsonwebtoken");
 
@@ -45,21 +31,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // middleware pour controller si y a un token
 const {controlIfToken} = require('./app//middlewares/members');
-const { request } = require("express");
 
 app.use(controlIfToken);
-
-/*
-if (request.user){
-   on écoute les messages
-  io.on('connection', (socket) => {
-    socket.on('chat message', (msg) => {
-      console.log("message", msg);
-      io.emit('chat message', msg);
-    });
-  });
-}
-*/
 
 // tous les routers
 app.use("/login", loginRouter);
@@ -71,9 +44,6 @@ app.use("/messages", messageRouter);
 app.use("/profil", profilRouter);
 app.use("/image", imageRouter);
 
-
-
-
-server.listen(3000, () => {
-  console.log('listening on *:3000');
+app.listen(3000, () => {
+  console.log(`listening on port ${port}`);
 });
