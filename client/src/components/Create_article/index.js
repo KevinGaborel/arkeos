@@ -85,13 +85,11 @@ export default function Create_article() {
               "http://localhost:3000/articles",
 
               {
-                data: {
                   title: data.title,
                   content: data.content,
                   category_id: data.category_id,
                   theme_id: data.theme_id,
-                  url_picture: response.data.location,
-                },
+                  url_picture: response.data.location
               },
 
               {

@@ -88,7 +88,6 @@ exports.addArticle = async (request, response, next) => {
 
 exports.deleteArticle = async (request, response, next) => {
   try {
-    //todoo ajouter de la sécurité
 
     const id_article = parseInt(request.params.id, 10);
 
@@ -128,8 +127,6 @@ exports.updateArticle = async (request, response, next) => {
     }
 
     const newValue = request.body;
-
-    console.log("les données front", newValue);
 
     for (const data in articleCurrent.dataValues) {
       if (articleCurrent.dataValues[data]) {

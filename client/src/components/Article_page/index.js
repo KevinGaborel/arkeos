@@ -18,12 +18,10 @@ const Article = () => {
 
   let token = localStorage.getItem("token");
   let user_id = localStorage.getItem("user");
-  console.log(user_id);
 
   const address = window.location.href;
   let url = address.split("/");
   let id = url[url.length - 1];
-  console.log(url);
   const getDataFromApi = async () => {
     axios
       .get(`http://localhost:3000/articles/${id}`, {
@@ -34,13 +32,11 @@ const Article = () => {
         },
       })
       .then((response) => {
-        console.log(response);
-        setContent(response.data[0].content);
-        setTitle(response.data[0].title);
-        setAuthor(response.data[0].author);
-        setArticledata(response.data[0]);
-        setAuthor_id(response.data[0].author_id);
-        console.log(response.data[0].author_id, user_id);
+        setContent(response.data.content);
+        setTitle(response.data.title);
+        setAuthor(response.data.author);
+        setArticledata(response.data);
+        setAuthor_id(response.data.author_id);
       });
   };
   useEffect(() => {
@@ -48,7 +44,6 @@ const Article = () => {
   }, []);
 
   useEffect(() => {
-    console.log(articledata);
   }, [articledata]);
 
   return (
