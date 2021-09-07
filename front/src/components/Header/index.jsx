@@ -1,6 +1,7 @@
 import './style.css';
 import React from 'react';
-import { useState, useEffect } from 'react';
+import logo from '../../asset/arkeos.svg';
+import { useState } from 'react';
 
 function Header() {
   const [ hideMenu, setHideMenu ] = useState(true);
@@ -31,7 +32,7 @@ function Header() {
               </React.Fragment>
             }
           </button>
-          <h1>Arkeos</h1>
+          <img src={logo} alt="Le logo du site arkéos" id='header-logo'/>
         </span>
         <nav hidden={hideMenu}>
           <ul>

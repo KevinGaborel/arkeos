@@ -6,6 +6,7 @@ import Error from './pages/Error';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
+import Article from './pages/Article';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,6 +15,9 @@ ReactDOM.render(
       <Switch>
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route exact path="/article/:title">
+          <Article />
         </Route>
         <Route>
          <Error />

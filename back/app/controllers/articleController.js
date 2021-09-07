@@ -8,6 +8,7 @@ const { getOptionsSearch } = require('../utils');
 exports.getAllArticles = async (request, response, next) => {
   try {
     const data = request.query;
+    console.log(data);
 
     let options = getOptionsSearch(data);
 
@@ -24,6 +25,7 @@ exports.getAllArticles = async (request, response, next) => {
       article.content = result;
     }
 
+    console.log(articles)
     response.json(articles);
   } catch (error) {
     console.trace(error);
@@ -43,6 +45,7 @@ exports.showArticle = async (request, response, next) => {
       return next();
     }
 
+    console.log(article);
     response.json(article);
   } catch (error) {
     console.trace(error);

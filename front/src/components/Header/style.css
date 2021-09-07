@@ -1,7 +1,8 @@
 header{
-    background-color: green;
+    background-color: rgb(36, 37, 27);
     color: white;
     position: fixed;
+    top: 0;
     width: 100%;
 }
 #container-btn-menu{
@@ -17,7 +18,7 @@ header{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-color: rgb(2, 92, 2);
+    background-color: rgb(78, 110, 78);
     border-radius: 5px;
     border: none;
     outline: none;
@@ -30,21 +31,22 @@ header{
     height: 5px;
     border-radius: 5px;
 }
+#croix-gauche, #croix-droite{
+    position: absolute;
+    width: 75%;
+}
 #croix-gauche{
     transform: rotateZ(45deg);
-    position: absolute;
 }
 #croix-droite{
     transform: rotateZ(135deg);
-    position: absolute;
 }
-h1{
-    font-size: 1.5rem;
+#header-logo{
+    width: 10rem;
 }
-
 /* nav */
 nav{
-    background-color: rgb(2, 92, 2);
+    background-color: rgb(65, 75, 7);
     position: fixed;
     height: 100%;
     width: 100%;
