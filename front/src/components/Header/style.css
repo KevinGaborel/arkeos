@@ -1,0 +1,67 @@
+header{
+    background-color: green;
+    color: white;
+    position: fixed;
+    width: 100%;
+}
+#container-btn-menu{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+#btn-menu{
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(2, 92, 2);
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    position: relative;
+}
+.btn-menu-barre{
+    background-color: maroon;
+    width: 90%;
+    height: 5px;
+    border-radius: 5px;
+}
+#croix-gauche{
+    transform: rotateZ(45deg);
+    position: absolute;
+}
+#croix-droite{
+    transform: rotateZ(135deg);
+    position: absolute;
+}
+h1{
+    font-size: 1.5rem;
+}
+
+/* nav */
+nav{
+    background-color: rgb(2, 92, 2);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+}
+ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+ul a{
+    text-decoration: none;
+    color: white;
+    width: 100%;
+}
+ul li{
+    margin: 0.5rem 0 0.5rem 1rem;
+    list-style: none;
+}
