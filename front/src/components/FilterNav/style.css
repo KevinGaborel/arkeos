@@ -1,0 +1,49 @@
+#filter-search, #select-container, #filter-number-results{
+    background-color: olivedrab;
+}
+#category, #theme, #search-bar{
+    outline: none;
+    border: none;
+    height: 1.8rem;
+}
+#filter-search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#search-bar, #loupe{
+    height: 2rem;
+}
+#loupe{
+    background-position: center;
+    background-image: url("../../asset/loupe.png");
+    background-size: 60%;
+    background-repeat: no-repeat;
+    width: 10%;
+    border-radius: 5px 0 0 5px;
+    background-color: maroon;
+}
+#search-bar{
+    background-color: white;
+    border: none;
+    padding-left: 1rem;
+    width: 80%;
+    margin-bottom: 0.7rem;
+    margin-top: 0.7rem;
+    border-radius: 0 5px 5px 0;
+}
+#select-container{
+    display: flex;
+    justify-content: space-around;
+}
+#category, #theme{
+    margin-bottom: 0.7rem;
+    background-color: white;
+}
+#filter-number-results{
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem 0;
+    color: white;
+    font-weight: 500;
+}

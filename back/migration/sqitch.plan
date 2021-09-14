@@ -1,0 +1,5 @@
+%syntax-version=1.0.0
+%project=arkeos
+
+init 2021-06-10T11:57:15Z KevinGaborel <kevin.gaborel@hotmail.fr> # creation des tables
+views 2021-06-11T14:09:36Z KevinGaborel <kevin.gaborel@hotmail.fr> # Add views in database

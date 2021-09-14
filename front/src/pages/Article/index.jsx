@@ -12,7 +12,6 @@ function Article() {
           const response = await fetch(`${utils.baseUrl}articles/${idArticle}`);
           let data = await response.json();
           data.content = data.content.split('   ');
-          console.log(data);
           setDataArticle(data);
         } catch (error) {
           console.error(error);

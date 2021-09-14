@@ -3,7 +3,7 @@ import './style.css';
 function Footer() {
   return (
     <footer>
-        vfdgregreg reg zreg rezgezg er gezgerg
+        Created by Kévin Gaborel
     </footer>
   );
 }

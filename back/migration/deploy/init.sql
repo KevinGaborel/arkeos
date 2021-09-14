@@ -79,7 +79,6 @@ CREATE TABLE "article" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "title" text NOT NULL UNIQUE,
     "content" text NOT NULL,
-    "breeding_sheet" boolean NOT NULL,
     "url_picture" text DEFAULT 'frog.jpg',
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ,

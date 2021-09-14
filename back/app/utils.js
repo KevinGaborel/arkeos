@@ -21,10 +21,11 @@ exports.getOptionsSearch = ({category, theme, date, rating, search}) => {
       rating !== "false" &&
       (date === undefined || date === "false")
     ) {
-      options.orderByFields = '"rating"';
-      options.order = rating;
+      options.orderByFields = "rating";
+      options.order = "ASC";
+      
     } else{
-        options.orderByFields = '"created_at"';
+        options.orderByFields = "created_at";
         //todoo à implémenter coté front
         //permet de passer d'un classement croissant à décroissant.
         //options.order = date;
