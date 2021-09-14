@@ -1,0 +1,69 @@
+header{
+    background-color: rgb(36, 37, 27);
+    color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+#container-btn-menu{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+#btn-menu{
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(78, 110, 78);
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    position: relative;
+}
+.btn-menu-barre{
+    background-color: maroon;
+    width: 90%;
+    height: 5px;
+    border-radius: 5px;
+}
+#croix-gauche, #croix-droite{
+    position: absolute;
+    width: 75%;
+}
+#croix-gauche{
+    transform: rotateZ(45deg);
+}
+#croix-droite{
+    transform: rotateZ(135deg);
+}
+#header-logo{
+    width: 10rem;
+}
+/* nav */
+nav{
+    background-color: rgb(65, 75, 7);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+}
+ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+ul a{
+    text-decoration: none;
+    color: white;
+    width: 100%;
+}
+ul li{
+    margin: 0.5rem 0 0.5rem 1rem;
+    list-style: none;
+}

@@ -1,0 +1,10 @@
+.article-score{
+    margin: 0.5rem 0;
+    border: olive 2px solid;
+    border-radius: 5px;
+    width: 8rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

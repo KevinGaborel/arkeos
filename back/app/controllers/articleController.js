@@ -17,11 +17,12 @@ exports.getAllArticles = async (request, response, next) => {
       return next();
     }
 
-    for (const article of articles) {
-      const content = article.content.split(" ");
+    for (const article of articles.articles) {
+      let content = article.content.split(" ");
       content.length = 40;
-      result = content.join(" ");
-      article.content = result;
+      content[40] = '...';
+      content = content.join(" ");
+      article.content = content;
     }
 
     response.json(articles);

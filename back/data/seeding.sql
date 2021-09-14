@@ -110,7 +110,7 @@ INSERT INTO "response" ("content", "author_id", "question_id") VALUES
     ('Il faut faire comme ça !', 1, 1),
     ('je rêve ou je répond à ma propre question o_O', 1, 1);
 
-INSERT INTO "article" ("title", "content", "breeding_sheet", "url_picture", "author_id", "category_id", "theme_id") VALUES
+INSERT INTO "article" ("title", "content", "url_picture", "author_id", "category_id", "theme_id") VALUES
     ('Le biotope de l'' iguane vert', 
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pulvinar arcu et libero finibus, a sollicitudin nibh iaculis. 
     Maecenas sed purus pharetra, mollis nibh at, egestas sapien. Suspendisse in eros eget sapien finibus tristique nec consequat velit. 
@@ -142,7 +142,7 @@ INSERT INTO "article" ("title", "content", "breeding_sheet", "url_picture", "aut
     Integer bibendum, mauris at luctus pulvinar, elit sapien vestibulum nulla, quis semper lacus lorem sit amet velit. 
     Mauris luctus augue vel justo ultrices dapibus. Nunc mi mi, pellentesque eu libero non, euismod pulvinar nunc. 
     Vivamus in sapien scelerisque, lobortis lorem non, feugiat mi. Nulla eu nibh sit amet dolor vulputate faucibus a eu diam. 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', false, 'biotope_iguane.jpeg', 4, 1, 7),
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'biotope_iguane.jpeg', 4, 1, 7),
 
 
     ('Le squelette des serpents', 
@@ -168,7 +168,7 @@ INSERT INTO "article" ("title", "content", "breeding_sheet", "url_picture", "aut
     Integer bibendum, mauris at luctus pulvinar, elit sapien vestibulum nulla, quis semper lacus lorem sit amet velit. 
     Mauris luctus augue vel justo ultrices dapibus. Nunc mi mi, pellentesque eu libero non, euismod pulvinar nunc. 
     Vivamus in sapien scelerisque, lobortis lorem non, feugiat mi. Nulla eu nibh sit amet dolor vulputate faucibus a eu diam. 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', false, 'squelette_serpent.jpg',1, 3, 5),
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'squelette_serpent.jpg',1, 3, 5),
 
 
     ('La stomatite chez les serpents', 'Praesent facilisis et augue ac dictum. Fusce eu dui quis ligula tempor feugiat. Vestibulum aliquet velit vitae urna ullamcorper suscipit. 
@@ -193,7 +193,7 @@ INSERT INTO "article" ("title", "content", "breeding_sheet", "url_picture", "aut
     Integer bibendum, mauris at luctus pulvinar, elit sapien vestibulum nulla, quis semper lacus lorem sit amet velit. 
     Mauris luctus augue vel justo ultrices dapibus. Nunc mi mi, pellentesque eu libero non, euismod pulvinar nunc. 
     Vivamus in sapien scelerisque, lobortis lorem non, feugiat mi. Nulla eu nibh sit amet dolor vulputate faucibus a eu diam. 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', false, 'stomatite.jpg', 4, 3, 1),
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'stomatite.jpg', 4, 3, 1),
 
 
     ('Testudo hermanni, une tortue en danger', 
@@ -219,7 +219,7 @@ INSERT INTO "article" ("title", "content", "breeding_sheet", "url_picture", "aut
     Integer bibendum, mauris at luctus pulvinar, elit sapien vestibulum nulla, quis semper lacus lorem sit amet velit. 
     Mauris luctus augue vel justo ultrices dapibus. Nunc mi mi, pellentesque eu libero non, euismod pulvinar nunc. 
     Vivamus in sapien scelerisque, lobortis lorem non, feugiat mi. Nulla eu nibh sit amet dolor vulputate faucibus a eu diam. 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', false, 'testudo_hermanni.jpg',1, 4, 7),
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'testudo_hermanni.jpg',1, 4, 7),
 
 
     ('Comprendre la législation', 
@@ -245,7 +245,7 @@ INSERT INTO "article" ("title", "content", "breeding_sheet", "url_picture", "aut
     Integer bibendum, mauris at luctus pulvinar, elit sapien vestibulum nulla, quis semper lacus lorem sit amet velit. 
     Mauris luctus augue vel justo ultrices dapibus. Nunc mi mi, pellentesque eu libero non, euismod pulvinar nunc. 
     Vivamus in sapien scelerisque, lobortis lorem non, feugiat mi. Nulla eu nibh sit amet dolor vulputate faucibus a eu diam. 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', false, 'comprendre_legislation.jpg', 1, null, 6),
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'comprendre_legislation.jpg', 1, null, 6),
 
 
     ('Le cyclage des Morelia viridis', 
@@ -271,7 +271,7 @@ INSERT INTO "article" ("title", "content", "breeding_sheet", "url_picture", "aut
     Integer bibendum, mauris at luctus pulvinar, elit sapien vestibulum nulla, quis semper lacus lorem sit amet velit. 
     Mauris luctus augue vel justo ultrices dapibus. Nunc mi mi, pellentesque eu libero non, euismod pulvinar nunc. 
     Vivamus in sapien scelerisque, lobortis lorem non, feugiat mi. Nulla eu nibh sit amet dolor vulputate faucibus a eu diam. 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', false, 'morelia_viridis.jpg', 4, 3, 1),
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'morelia_viridis.jpg', 4, 3, 1),
 
 
     ('L''alimentation des tortues terrestres', 
@@ -297,7 +297,7 @@ INSERT INTO "article" ("title", "content", "breeding_sheet", "url_picture", "aut
     Integer bibendum, mauris at luctus pulvinar, elit sapien vestibulum nulla, quis semper lacus lorem sit amet velit. 
     Mauris luctus augue vel justo ultrices dapibus. Nunc mi mi, pellentesque eu libero non, euismod pulvinar nunc. 
     Vivamus in sapien scelerisque, lobortis lorem non, feugiat mi. Nulla eu nibh sit amet dolor vulputate faucibus a eu diam. 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', false, 'alimentation_tortues.jpeg', 10, 4, 3),
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'alimentation_tortues.jpeg', 10, 4, 3),
 
 
     ('Les bases de la génétique', 
@@ -323,7 +323,7 @@ INSERT INTO "article" ("title", "content", "breeding_sheet", "url_picture", "aut
     Integer bibendum, mauris at luctus pulvinar, elit sapien vestibulum nulla, quis semper lacus lorem sit amet velit. 
     Mauris luctus augue vel justo ultrices dapibus. Nunc mi mi, pellentesque eu libero non, euismod pulvinar nunc. 
     Vivamus in sapien scelerisque, lobortis lorem non, feugiat mi. Nulla eu nibh sit amet dolor vulputate faucibus a eu diam. 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', false, 'bases_genetique.jpg',4, null, 4),
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'bases_genetique.jpg',4, null, 4),
 
 
     ('Construire son terrarium', 
@@ -349,7 +349,7 @@ INSERT INTO "article" ("title", "content", "breeding_sheet", "url_picture", "aut
     Integer bibendum, mauris at luctus pulvinar, elit sapien vestibulum nulla, quis semper lacus lorem sit amet velit. 
     Mauris luctus augue vel justo ultrices dapibus. Nunc mi mi, pellentesque eu libero non, euismod pulvinar nunc. 
     Vivamus in sapien scelerisque, lobortis lorem non, feugiat mi. Nulla eu nibh sit amet dolor vulputate faucibus a eu diam. 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', false, 'construire_terrarium.jpg', 2, null, 2),
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'construire_terrarium.jpg', 2, null, 2),
 
 
     ('La communication chez les agames', 
@@ -375,7 +375,7 @@ INSERT INTO "article" ("title", "content", "breeding_sheet", "url_picture", "aut
     Integer bibendum, mauris at luctus pulvinar, elit sapien vestibulum nulla, quis semper lacus lorem sit amet velit. 
     Mauris luctus augue vel justo ultrices dapibus. Nunc mi mi, pellentesque eu libero non, euismod pulvinar nunc. 
     Vivamus in sapien scelerisque, lobortis lorem non, feugiat mi. Nulla eu nibh sit amet dolor vulputate faucibus a eu diam. 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', false, 'communication_agames.jpg', 4, 1, 5),
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'communication_agames.jpg', 4, 1, 5),
 
 
     ('L'' hibernation chez les tortues', 
@@ -389,7 +389,7 @@ INSERT INTO "article" ("title", "content", "breeding_sheet", "url_picture", "aut
     Integer bibendum, mauris at luctus pulvinar, elit sapien vestibulum nulla, quis semper lacus lorem sit amet velit. 
     Mauris luctus augue vel justo ultrices dapibus. Nunc mi mi, pellentesque eu libero non, euismod pulvinar nunc. 
     Vivamus in sapien scelerisque, lobortis lorem non, feugiat mi. Nulla eu nibh sit amet dolor vulputate faucibus a eu diam. 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', false, 'hibernation_tortue.jpg', 6, 4, 5),
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'hibernation_tortue.jpg', 6, 4, 5),
 
 
     ('La respiration cutanée', 
@@ -403,7 +403,7 @@ INSERT INTO "article" ("title", "content", "breeding_sheet", "url_picture", "aut
     Integer bibendum, mauris at luctus pulvinar, elit sapien vestibulum nulla, quis semper lacus lorem sit amet velit. 
     Mauris luctus augue vel justo ultrices dapibus. Nunc mi mi, pellentesque eu libero non, euismod pulvinar nunc. 
     Vivamus in sapien scelerisque, lobortis lorem non, feugiat mi. Nulla eu nibh sit amet dolor vulputate faucibus a eu diam. 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', false, 'respiration_cutanee.jpg',2, 2, 5),
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'respiration_cutanee.jpg',2, 2, 5),
 
 
     ('Nourrir les jeunes grenouilles', 'Praesent facilisis et augue ac dictum. Fusce eu dui quis ligula tempor feugiat. Vestibulum aliquet velit vitae urna ullamcorper suscipit. 
@@ -428,7 +428,7 @@ INSERT INTO "article" ("title", "content", "breeding_sheet", "url_picture", "aut
     Integer bibendum, mauris at luctus pulvinar, elit sapien vestibulum nulla, quis semper lacus lorem sit amet velit. 
     Mauris luctus augue vel justo ultrices dapibus. Nunc mi mi, pellentesque eu libero non, euismod pulvinar nunc. 
     Vivamus in sapien scelerisque, lobortis lorem non, feugiat mi. Nulla eu nibh sit amet dolor vulputate faucibus a eu diam. 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', false, 'nourrir_grenouilles.jpeg', 2, 3, null),
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'nourrir_grenouilles.jpeg', 2, 3, null),
 
 
     ('Les phases de Python regius', 
@@ -454,7 +454,7 @@ INSERT INTO "article" ("title", "content", "breeding_sheet", "url_picture", "aut
     Integer bibendum, mauris at luctus pulvinar, elit sapien vestibulum nulla, quis semper lacus lorem sit amet velit. 
     Mauris luctus augue vel justo ultrices dapibus. Nunc mi mi, pellentesque eu libero non, euismod pulvinar nunc. 
     Vivamus in sapien scelerisque, lobortis lorem non, feugiat mi. Nulla eu nibh sit amet dolor vulputate faucibus a eu diam. 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', false, 'python_regius.jpg', 2, 3, 4),
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'python_regius.jpg', 2, 3, 4),
 
 
     ('La Trachemys scripta elegans', 
@@ -480,7 +480,7 @@ INSERT INTO "article" ("title", "content", "breeding_sheet", "url_picture", "aut
     Integer bibendum, mauris at luctus pulvinar, elit sapien vestibulum nulla, quis semper lacus lorem sit amet velit. 
     Mauris luctus augue vel justo ultrices dapibus. Nunc mi mi, pellentesque eu libero non, euismod pulvinar nunc. 
     Vivamus in sapien scelerisque, lobortis lorem non, feugiat mi. Nulla eu nibh sit amet dolor vulputate faucibus a eu diam. 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', true, '', 4, 4, null),
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', '', 4, 4, null),
 
 
     ('L''Eublepharis macularius', 
@@ -506,7 +506,7 @@ INSERT INTO "article" ("title", "content", "breeding_sheet", "url_picture", "aut
     Integer bibendum, mauris at luctus pulvinar, elit sapien vestibulum nulla, quis semper lacus lorem sit amet velit. 
     Mauris luctus augue vel justo ultrices dapibus. Nunc mi mi, pellentesque eu libero non, euismod pulvinar nunc. 
     Vivamus in sapien scelerisque, lobortis lorem non, feugiat mi. Nulla eu nibh sit amet dolor vulputate faucibus a eu diam. 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', true, '', 1, 1, null),
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', '', 1, 1, null),
 
 
     ('l''Oedodera marmorata', 
@@ -532,7 +532,7 @@ INSERT INTO "article" ("title", "content", "breeding_sheet", "url_picture", "aut
     Integer bibendum, mauris at luctus pulvinar, elit sapien vestibulum nulla, quis semper lacus lorem sit amet velit. 
     Mauris luctus augue vel justo ultrices dapibus. Nunc mi mi, pellentesque eu libero non, euismod pulvinar nunc. 
     Vivamus in sapien scelerisque, lobortis lorem non, feugiat mi. Nulla eu nibh sit amet dolor vulputate faucibus a eu diam. 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', true, '', 8, 1, null),
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', '', 8, 1, null),
 
 
     ('Faut-il manipuler ses animaux ?', 
@@ -558,7 +558,7 @@ INSERT INTO "article" ("title", "content", "breeding_sheet", "url_picture", "aut
     Integer bibendum, mauris at luctus pulvinar, elit sapien vestibulum nulla, quis semper lacus lorem sit amet velit. 
     Mauris luctus augue vel justo ultrices dapibus. Nunc mi mi, pellentesque eu libero non, euismod pulvinar nunc. 
     Vivamus in sapien scelerisque, lobortis lorem non, feugiat mi. Nulla eu nibh sit amet dolor vulputate faucibus a eu diam. 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', false, 'manipuler_animaux.jpeg', 9, 1, 7);
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'manipuler_animaux.jpeg', 9, 1, 7);
 
 INSERT INTO "photo" ("location", "url_picture", "article_id", "author_id") VALUES
     ('article', './img/article/img1.png', 1, 1),
