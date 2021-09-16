@@ -1,71 +1,98 @@
 import './style.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Fragment } from 'react';
+import { useParams } from 'react-router-dom';
 import utils from  '../../utils';
 import CardArticle from '../../components/CardArticle';
 import FilterNav from '../../components/FilterNav';
+import SelectionPage from '../../components/SelectionPage';
 
 function Home() {
   const [ cardData, setDataCard ] = useState([]);
+  const [ dataLoading, setDataLoading ] = useState(false);
   const [ numberResults, setNumberResults ] = useState();
-  const [ optionsFilter, setOptionsFilter ] = useState({category: 'false', theme: 'false'});
+  const [ optionsFilter, setOptionsFilter ] = useState({category: 'false', theme: 'false', order: 'ASC', sort: 'created_at'});
+  const [ firstRender, setFirstRender ] = useState(true);
 
   function changeCategory(e){
     setOptionsFilter({...optionsFilter, category: e.target.value});
-  }
+  };
   function changeTheme(e){
     setOptionsFilter({...optionsFilter, theme: e.target.value});
-  }
+  };
   function changeSearch(e){
-    setOptionsFilter({...optionsFilter, search: e.target.value});
-  }
-
-  function getSlug(title){
-    return title.toLowerCase().replaceAll(' ', '-');
+    if (e.target.value){
+      setOptionsFilter({...optionsFilter, search: e.target.value});
+    } else{
+      setOptionsFilter({...optionsFilter, search: false});
+    }
+  };
+  function changeSortOrder(e){
+    const [sort, order] = e.target.value.split('-');
+    setOptionsFilter({...optionsFilter, sort: sort, order: order});
   };
 
+  let { page } = useParams();
+  if (page){
+    page = parseInt(page, 10);
+  }
   
   useEffect(() => {
     (async function () {
       try {
-        const response = await fetch(`${utils.baseUrl}articles`);
+        const response = await fetch(`${utils.baseUrl}articles/${page ? `?page=${page}` : ''}`);
         const data = await response.json()
         setDataCard(data.articles);
         setNumberResults(data.count);
+        setDataLoading(true);
+        console.log("useEffect 1");
       } catch (error) {
         console.error(error);
       }
     })();
-  }, []);
+
+  
+
+  }, [page]);
   
   useEffect(() => {
     async function getDataFromAPI(options) {
       try {
-        let response;
-        if (!options.search){
-          response = await fetch(`${utils.baseUrl}articles?category=${options.category}&theme=${options.theme}`);
-        } else{
-          response = await fetch(`${utils.baseUrl}articles?category=${options.category}&theme=${options.theme}&search=${options.search}`);
+        let query;
+        for (const key in options){
+          query = query !== undefined ? query + `&${key}=${optionsFilter[key]}` : `?${key}=${optionsFilter[key]}`;
         }
+        console.log(options, query);
+        const response = await fetch(`${utils.baseUrl}articles${query}`);
         const data = await response.json();
         
         setDataCard(data.articles);
         setNumberResults(data.count);
+        setDataLoading(true);
+        console.log("useEffect 2");
       } catch (error) {
         console.error(error);
       }
     };
 
-    getDataFromAPI(optionsFilter);
+    if (!firstRender){
+      getDataFromAPI(optionsFilter);
+    }
+    setFirstRender(false);
+
   }, [optionsFilter]);
 
-
   return (
-    <main>
-      <FilterNav category={changeCategory} theme={changeTheme} search={changeSearch} numberResults={numberResults} />
-      <section id='card-container'>
-        {cardData.map((card) => <a href={`/article/${getSlug(card.title)}-${card.id}`} key={card.id}><CardArticle  data={card} /></a>) }
-      </section>
-    </main>
+    <Fragment>
+    	<main>
+    	  <FilterNav category={changeCategory} theme={changeTheme} 
+    	  search={changeSearch} sort={changeSortOrder}
+    	  numberResults={numberResults} dataLoading={dataLoading} />
+    	  <section id='card-container'>
+    	    {cardData.map((card) => <a href={`/article/${utils.getSlug(card.title)}-${card.id}`} key={card.id}><CardArticle  data={card} /></a>) }
+    	  </section>
+      <SelectionPage numberResults={numberResults} page={page}/>
+    	</main>
+    </Fragment>
   );
 }
 

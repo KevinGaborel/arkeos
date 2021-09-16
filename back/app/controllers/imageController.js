@@ -6,12 +6,8 @@ exports.showImage = async (request, response, next) => {
     try {
         const { filename } = request.params;
 
-        console.log("c'est le filename", filename);
-
         const dirname = path.resolve();
         const fullfilepath = path.join(dirname, 'app/img/' + filename);
-
-        console.log("c'est le full path", fullfilepath);
 
         return response.sendFile(fullfilepath);
 
@@ -25,7 +21,6 @@ exports.addImage = async (request, response, next) => {
     try {
         const image = request.file;
 
-        console.log(image);
         const data = {};
         //data.author_id = request.user;
         data.author_id = 1;
@@ -33,7 +28,6 @@ exports.addImage = async (request, response, next) => {
         data.path = image.path;
 
         const photo = await PhotoModel.addImage(data);
-        console.log("c'est la photo", photo);
 
         if(!photo){
             return next();

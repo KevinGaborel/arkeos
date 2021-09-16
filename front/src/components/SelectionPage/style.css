@@ -1,0 +1,19 @@
+#page-selection{
+    border-top: white dashed 1px;
+    border-bottom: white dashed 1px;
+    background-color: rgb(37, 37, 37);
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+.page-selection-link{
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+.link-disabled{
+    pointer-events: none;
+    cursor: default;
+    color: rgb(148, 148, 148);
+}

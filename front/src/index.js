@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Error from './pages/Error';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -13,7 +13,10 @@ ReactDOM.render(
     <Router>
       <Header />
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/accueil/">
+          <Home />
+        </Route>
+        <Route exact path="/accueil/pages/:page">
           <Home />
         </Route>
         <Route exact path="/article/:title">
