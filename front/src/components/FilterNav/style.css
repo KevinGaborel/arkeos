@@ -1,17 +1,21 @@
-#filter-search, #select-container, #filter-number-results{
+#menu-filtre{
     background-color: olivedrab;
 }
-#category, #theme, #search-bar{
+.filter-container_center, .select-container, #theme, #filter-number-results{
+    padding: 0.3rem 0;
+}
+#category, #theme, #search-bar, #sort-by{
     outline: none;
     border: none;
     height: 1.8rem;
 }
-#filter-search{
+
+.filter-container_center{
     display: flex;
     align-items: center;
     justify-content: center;
 }
-#search-bar, #loupe{
+#loupe{
     height: 2rem;
 }
 #loupe{
@@ -28,22 +32,19 @@
     border: none;
     padding-left: 1rem;
     width: 80%;
-    margin-bottom: 0.7rem;
-    margin-top: 0.7rem;
     border-radius: 0 5px 5px 0;
 }
 #select-container{
     display: flex;
     justify-content: space-around;
 }
-#category, #theme{
-    margin-bottom: 0.7rem;
+#category, #theme, #sort-by{
     background-color: white;
+    border-radius: 5px;
 }
 #filter-number-results{
     display: flex;
     justify-content: center;
-    padding: 0.5rem 0;
     color: white;
     font-weight: 500;
 }

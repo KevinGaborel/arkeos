@@ -1,11 +1,12 @@
 import './style.css';
 import React from 'react';
+import Loader from '../Loader';
 
-function FilterNav({category, theme, search, numberResults}) {
+function FilterNav({category, theme, search, sort, numberResults, dataLoading}) {
 
   return (
-    <React.Fragment>
-      <div id='filter-search'>
+    <section id="menu-filtre">
+      <div className='filter-container_center'>
         <div id="loupe"></div>
         <input type="search" name="search-bar" id="search-bar" onChange={search}/>
       </div>
@@ -31,10 +32,19 @@ function FilterNav({category, theme, search, numberResults}) {
         </select>
       </div>
 
+      <div className='filter-container_center'>
+        <select name="sort-by" id="sort-by" onChange={sort} >
+            <option value='created_at-DESC' >Trier par: Nouveautés</option>
+            <option value='created_at-ASC' >Trier par: Plus anciens</option>
+            <option value='rating-DESC' >Trier par: Mieux noté</option>
+            <option value='rating-ASC' >Trier par: Moins bien notés</option>
+        </select>
+      </div>
+
       <span id='filter-number-results'>
-        Il y a {numberResults} résultat(s)
+        {dataLoading ? `Il y a ${numberResults} résultat(s)` : <Loader />}
       </span>
-    </React.Fragment>
+    </section>
   );
 }
 

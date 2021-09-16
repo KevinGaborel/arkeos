@@ -32,11 +32,11 @@ function Header() {
               </React.Fragment>
             }
           </button>
-          <a href="/"><img src={logo} alt="Le logo du site arkéos" id='header-logo'/></a>
+          <a href="/accueil"><img src={logo} alt="Le logo du site arkéos" id='header-logo'/></a>
         </span>
         <nav hidden={hideMenu}>
           <ul>
-            <a href="/">
+            <a href="/accueil">
               <li>Accueil</li>
             </a>
             <a href="/">
