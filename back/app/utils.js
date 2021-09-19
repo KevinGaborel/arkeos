@@ -29,8 +29,9 @@ exports.getOptionsSearch = ({category, theme, order, sort, search, page}) => {
       options.order = "ASC";
     }
     
-    if (search !== undefined) {
+    if (search !== undefined && search !== 'false') {
       options.search = search;
+      console.log("coucou");
     }
 
     options.page = parseInt(page, 10);

@@ -2,17 +2,29 @@ import './style.css';
 import React from 'react';
 import Loader from '../Loader';
 
-function FilterNav({category, theme, search, sort, numberResults, dataLoading}) {
+function FilterNav({numberResults, dataLoading, setOptionsFilter, optionsFilter}) {
+  function changeSearch(e){
+    if (e.target.value){
+      setOptionsFilter({...optionsFilter, search: e.target.value});
+    } else{
+      setOptionsFilter({...optionsFilter, search: false});
+    }
+  };
+
+  function changeSortOrder(e){
+    const [sort, order] = e.target.value.split('-');
+    setOptionsFilter({...optionsFilter, sort: sort, order: order});
+  };
 
   return (
     <section id="menu-filtre">
       <div className='filter-container_center'>
         <div id="loupe"></div>
-        <input type="search" name="search-bar" id="search-bar" onChange={search}/>
+        <input type="search" name="search-bar" id="search-bar" onChange={changeSearch}/>
       </div>
         
       <div id='select-container'>
-        <select name="category" id="category" onChange={category} >
+        <select name="category" id="category" onChange={(e) => setOptionsFilter({...optionsFilter, category: e.target.value})} >
           <option value='false' >Catégories</option>
           <option value='Lézards' >Lézards</option>
           <option value='Amphibiens' >Amphibiens</option>
@@ -20,7 +32,7 @@ function FilterNav({category, theme, search, sort, numberResults, dataLoading}) 
           <option value='Tortues' >Tortues</option>
         </select>
 
-        <select name="theme" id="theme" onChange={theme} >
+        <select name="theme" id="theme" onChange={(e) => setOptionsFilter({...optionsFilter, theme: e.target.value})} >
           <option value='false'>Thèmes</option>
           <option value='Soins et pathologies'>Soins et pathologies</option>
           <option value='Terrarium'>Terrarium</option>
@@ -33,7 +45,7 @@ function FilterNav({category, theme, search, sort, numberResults, dataLoading}) 
       </div>
 
       <div className='filter-container_center'>
-        <select name="sort-by" id="sort-by" onChange={sort} >
+        <select name="sort-by" id="sort-by" onChange={changeSortOrder} >
             <option value='created_at-DESC' >Trier par: Nouveautés</option>
             <option value='created_at-ASC' >Trier par: Plus anciens</option>
             <option value='rating-DESC' >Trier par: Mieux noté</option>

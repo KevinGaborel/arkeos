@@ -13,24 +13,6 @@ function Home() {
   const [ optionsFilter, setOptionsFilter ] = useState({category: 'false', theme: 'false', order: 'ASC', sort: 'created_at'});
   const [ firstRender, setFirstRender ] = useState(true);
 
-  function changeCategory(e){
-    setOptionsFilter({...optionsFilter, category: e.target.value});
-  };
-  function changeTheme(e){
-    setOptionsFilter({...optionsFilter, theme: e.target.value});
-  };
-  function changeSearch(e){
-    if (e.target.value){
-      setOptionsFilter({...optionsFilter, search: e.target.value});
-    } else{
-      setOptionsFilter({...optionsFilter, search: false});
-    }
-  };
-  function changeSortOrder(e){
-    const [sort, order] = e.target.value.split('-');
-    setOptionsFilter({...optionsFilter, sort: sort, order: order});
-  };
-
   let { page } = useParams();
   if (page){
     page = parseInt(page, 10);
@@ -84,8 +66,7 @@ function Home() {
   return (
     <Fragment>
     	<main>
-    	  <FilterNav category={changeCategory} theme={changeTheme} 
-    	  search={changeSearch} sort={changeSortOrder}
+        <FilterNav optionsFilter={optionsFilter} setOptionsFilter={setOptionsFilter} 
     	  numberResults={numberResults} dataLoading={dataLoading} />
     	  <section id='card-container'>
     	    {cardData.map((card) => <a href={`/article/${utils.getSlug(card.title)}-${card.id}`} key={card.id}><CardArticle  data={card} /></a>) }
