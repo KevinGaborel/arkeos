@@ -11,30 +11,11 @@ function Home() {
   const [ dataLoading, setDataLoading ] = useState(false);
   const [ numberResults, setNumberResults ] = useState();
   const [ optionsFilter, setOptionsFilter ] = useState({category: 'false', theme: 'false', order: 'ASC', sort: 'created_at'});
-  const [ firstRender, setFirstRender ] = useState(true);
 
   let { page } = useParams();
   if (page){
     page = parseInt(page, 10);
   }
-  
-  useEffect(() => {
-    (async function () {
-      try {
-        const response = await fetch(`${utils.baseUrl}articles/${page ? `?page=${page}` : ''}`);
-        const data = await response.json()
-        setDataCard(data.articles);
-        setNumberResults(data.count);
-        setDataLoading(true);
-        console.log("useEffect 1");
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-
-  
-
-  }, [page]);
   
   useEffect(() => {
     async function getDataFromAPI(options) {
@@ -43,25 +24,20 @@ function Home() {
         for (const key in options){
           query = query !== undefined ? query + `&${key}=${optionsFilter[key]}` : `?${key}=${optionsFilter[key]}`;
         }
-        console.log(options, query);
         const response = await fetch(`${utils.baseUrl}articles${query}`);
         const data = await response.json();
         
         setDataCard(data.articles);
         setNumberResults(data.count);
         setDataLoading(true);
-        console.log("useEffect 2");
       } catch (error) {
         console.error(error);
       }
     };
 
-    if (!firstRender){
-      getDataFromAPI(optionsFilter);
-    }
-    setFirstRender(false);
+    getDataFromAPI(optionsFilter);
 
-  }, [optionsFilter]);
+  }, [optionsFilter, page]);
 
   return (
     <Fragment>

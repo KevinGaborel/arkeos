@@ -16,6 +16,7 @@ function SelectionPage({numberResults, page}) {
         }
         setNumberPages(pages);
     }
+    
     useEffect(()=> {
         if (numberResults) {
             getNumberPages(numberResults)
