@@ -32,8 +32,9 @@ class CoreModel {
         let preparedQuery = {
             query : options.search ? 
                 `SELECT * FROM ${this.tableName} WHERE "title" LIKE '%' || $1 || '%' OR "title" LIKE '%' || $2 || '%' 
-                ORDER BY ${options.orderByFields} ${options.order} NULLS LAST LIMIT $3`
-                : `SELECT * FROM ${this.tableName} ORDER BY ${options.orderByFields} ${options.order} ${options.order !== "DESC" ? "NULLS FIRST" : "NULLS LAST"} LIMIT $1`,
+                ORDER BY ${options.orderByFields} ${options.order} NULLS LAST LIMIT $3 OFFSET ${options.page}`
+                : `SELECT * FROM ${this.tableName} ORDER BY ${options.orderByFields} ${options.order} ${options.order !== "DESC" ? "NULLS FIRST" : "NULLS LAST"} 
+                LIMIT $1 OFFSET ${options.page}`,
                 
             valueQuery: options.search ?
                 [options.search, options.search2, options.nbArticles]
@@ -51,14 +52,15 @@ class CoreModel {
         
         if (!options.category && options.theme && !options.search){
             // si il y a le filtre de theme
-            preparedQuery.query = `SELECT * FROM ${this.tableName} WHERE theme_name=$1 ORDER BY ${options.orderByFields} ${options.order} ${options.order !== "DESC" ? "NULLS FIRST" : "NULLS LAST"} LIMIT $2`;
+            preparedQuery.query = `SELECT * FROM ${this.tableName} WHERE theme_name=$1 ORDER BY ${options.orderByFields} ${options.order} 
+            ${options.order !== "DESC" ? "NULLS FIRST" : "NULLS LAST"} LIMIT $2 OFFSET ${options.page}`;
             preparedQuery.valueQuery = [options.theme, options.nbArticles];
 
             preparedQuery.count = `SELECT COUNT(*) FROM ${this.tableName} WHERE theme_name=$1`;
             preparedQuery.valueCount = [options.theme];
         } else if (!options.category && options.theme && options.search){
             preparedQuery.query = `SELECT * FROM ${this.tableName} WHERE theme_name=$1 AND "title" LIKE '%' || $2 || '%' OR "title" LIKE '%' || $3 || '%' 
-            ORDER BY ${options.orderByFields} ${options.order} ${options.order !== "DESC" ? "NULLS FIRST" : "NULLS LAST"} LIMIT $4`;
+            ORDER BY ${options.orderByFields} ${options.order} ${options.order !== "DESC" ? "NULLS FIRST" : "NULLS LAST"} LIMIT $4 OFFSET ${options.page}`;
             preparedQuery.valueQuery = [options.theme, options.search, options.search2, options.nbArticles];
 
             preparedQuery.count = `SELECT COUNT(*) FROM ${this.tableName} WHERE theme_name=$1 AND "title" LIKE '%' || $2 || '%' OR "title" LIKE '%' || $3 || '%'`;
@@ -67,14 +69,15 @@ class CoreModel {
 
         else if (options.category && !options.theme && !options.search){
             // si il ya le filtre de categories
-            preparedQuery.query = `SELECT * FROM ${this.tableName} WHERE category_name=$1 ORDER BY ${options.orderByFields} ${options.order} ${options.order !== "DESC" ? "NULLS FIRST" : "NULLS LAST"} LIMIT $2`;
+            preparedQuery.query = `SELECT * FROM ${this.tableName} WHERE category_name=$1 ORDER BY ${options.orderByFields} ${options.order} 
+            ${options.order !== "DESC" ? "NULLS FIRST" : "NULLS LAST"} LIMIT $2 OFFSET ${options.page}`;
             preparedQuery.valueQuery =  [options.category, options.nbArticles];
 
             preparedQuery.count = `SELECT COUNT(*) FROM ${this.tableName} WHERE category_name=$1`;
             preparedQuery.valueCount =  [options.category];
         } else if (options.category && !options.theme && options.search){
             preparedQuery.query = `SELECT * FROM ${this.tableName} WHERE category_name=$1 AND "title" LIKE '%' || $2 || '%' OR "title" LIKE '%' || $3 || '%' 
-            ORDER BY ${options.orderByFields} ${options.order} ${options.order !== "DESC" ? "NULLS FIRST" : "NULLS LAST"} LIMIT $4`;
+            ORDER BY ${options.orderByFields} ${options.order} ${options.order !== "DESC" ? "NULLS FIRST" : "NULLS LAST"} LIMIT $4 OFFSET ${options.page}`;
             preparedQuery.valueQuery = [options.category, options.search, options.search2, options.nbArticles];
 
             preparedQuery.count = `SELECT COUNT(*) FROM ${this.tableName} WHERE category_name=$1 AND "title" LIKE '%' || $2 || '%' OR "title" LIKE '%' || $3 || '%'`;
@@ -84,14 +87,15 @@ class CoreModel {
         else if (options.category && options.theme && !options.search){
             // si il y a les deux filtres
             preparedQuery.query = `SELECT * FROM ${this.tableName} WHERE category_name=$1 AND theme_name=$2 
-            ORDER BY ${options.orderByFields} ${options.order} ${options.order !== "DESC" ? "NULLS FIRST" : "NULLS LAST"} LIMIT $3`;
+            ORDER BY ${options.orderByFields} ${options.order} ${options.order !== "DESC" ? "NULLS FIRST" : "NULLS LAST"} LIMIT $3 OFFSET ${options.page}`;
             preparedQuery.valueQuery =  [options.category , options.theme, options.nbArticles];
 
             preparedQuery.count = `SELECT COUNT(*) FROM ${this.tableName} WHERE category_name=$1 AND theme_name=$2`;
             preparedQuery.valueCount =  [options.category , options.theme];
         }else if (options.category && options.theme && options.search){
             preparedQuery.query = `SELECT * FROM ${this.tableName} WHERE category_name=$1 AND theme_name=$2 
-            AND "title" LIKE '%' || $3 || '%' OR "title" LIKE '%' || $4 || '%' ORDER BY ${options.orderByFields} ${options.order} ${options.order !== "DESC" ? "NULLS FIRST" : "NULLS LAST"} LIMIT $5`;
+            AND "title" LIKE '%' || $3 || '%' OR "title" LIKE '%' || $4 || '%' ORDER BY ${options.orderByFields} ${options.order} 
+            ${options.order !== "DESC" ? "NULLS FIRST" : "NULLS LAST"} LIMIT $5 OFFSET ${options.page}`;
             preparedQuery.valueQuery = [options.category, options.theme, options.search, options.search2, options.nbArticles];
 
             preparedQuery.count = `SELECT COUNT(*) FROM ${this.tableName} WHERE category_name=$1 AND theme_name=$2 

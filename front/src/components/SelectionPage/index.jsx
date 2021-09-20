@@ -21,14 +21,14 @@ function SelectionPage({numberResults, page}) {
         if (numberResults) {
             getNumberPages(numberResults)
         }
-    }, [numberResults])
+    }, [numberResults]);
    
     return (
     <section id="page-selection">
        {numberPages && numberPages.map((value, index) => 
        <Link key={value + index} to={`/accueil/pages/${value}`} 
        className={`page-selection-link ${page === value ? 'link-disabled' : !page && value === 1 ? 'link-disabled' : ''}`}>
-           {value > 1 ? ", " + value : value}
+           {value > 1 ? value : value}
         </Link>)
         }
     </section>
