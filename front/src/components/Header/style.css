@@ -44,6 +44,15 @@ header{
 #header-logo{
     width: 10rem;
 }
+#link-modale-connexion{
+    font-weight: 500;
+}
+#link-modale-connexion:hover{
+    text-shadow: maroon -2px 0 2px;
+    text-decoration: underline maroon;
+    transform: scale(1.05);
+    transition: linear 0.2s;
+}
 /* nav */
 nav{
     background-color: rgb(65, 75, 7);

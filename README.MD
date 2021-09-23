@@ -1,9 +1,14 @@
 # Projet Arkeos
 
-Projet réalisé avec deux camarades, dans le cadre de la fin de formation chez O'clock, l'Apothéose:
-- une semaine de conception
-- deux semaines de réalisation
+*/!\\* Ce projet est actuellement en cours de factorisation coté back (plus quelques ajouts), et en réécriture complète coté front.
+À l'issue de cette nouvelle version, elle sera mise en ligne. */!\\*
 
-## Vous pouvez retrouver la présentation de ce projet ici:
+## Fonctionnalités 
+Arkeos sera une plateforme dédiée à la mise en relation, et à l'échange d'informations entre passionnés de terrariophilie, à travers plusieurs moyens dont :
 
-https://youtu.be/8kGnW_FgmBg?t=873
+- la possibilité de créer des articles
+- poster des commentaires sur les articles
+- poser une question à la communauté
+- un système de vote pour les réponses apporté (type stack overflow) et pour les articles
+- Une marketplace de petites annonces concernant ces animaux à sang-froid
+- Un système de messagerie instantanée (pour la v2)

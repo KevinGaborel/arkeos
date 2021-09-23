@@ -1,10 +1,14 @@
 import './style.css';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../asset/arkeos.svg';
 import { useState } from 'react';
+import ModaleConnexion from '../ModaleConnexion';
 
 function Header() {
   const [ hideMenu, setHideMenu ] = useState(true);
+  const [ hideModale, setHideModale ] = useState(true);
+
 
   function getStatusMenu(){
     if (hideMenu){
@@ -32,7 +36,8 @@ function Header() {
               </React.Fragment>
             }
           </button>
-          <a href="/accueil"><img src={logo} alt="Le logo du site arkéos" id='header-logo'/></a>
+          <Link to="/accueil"><img src={logo} alt="Le logo du site arkéos" id='header-logo'/></Link>
+          <span id="link-modale-connexion" onClick={(e) => setHideModale(false)} >Se connecter</span>
         </span>
         <nav hidden={hideMenu}>
           <ul>
@@ -51,6 +56,7 @@ function Header() {
           </ul>
         </nav>
       </header>
+      {hideModale === false && <ModaleConnexion hideModale={hideModale} setHideModale={setHideModale}/>}
     </React.Fragment>
   );
 }
