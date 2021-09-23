@@ -9,6 +9,7 @@ const utils = {
     
     getSlug(title){
         return title.toLowerCase().replaceAll(' ', '-');
-    }
+    },
+
 };
 export default utils;

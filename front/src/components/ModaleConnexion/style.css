@@ -49,3 +49,8 @@
 .modale-main-input input:focus{
     border: orangered solid 1px;
 }
+.text-error{
+    color: maroon;
+    font-weight: 600;
+    width: 90%;
+}
