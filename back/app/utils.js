@@ -1,46 +1,50 @@
 exports.firstCharacterUpperCase = (string) => {
-    const firstCharacter = string.substr(0, 1).toUpperCase();
-    const secondPart = string.substr(1, string.length).toLowerCase();
-    const newString = firstCharacter + secondPart;
-    return newString;
+  const firstCharacter = string.substr(0, 1).toUpperCase();
+  const secondPart = string.substr(1, string.length).toLowerCase();
+  const newString = firstCharacter + secondPart;
+  return newString;
 };
 
 exports.getOptionsSearch = ({category, theme, order, sort, search, page}) => {
-    let options = {};
+  let options = {};
+  
+  // nombre d'article à afficher pour le moment
+  options.nbArticles = 10;
+    
+  if (category !== undefined && category !== "false") {
+    options.category = category;
+  }
+  
+  if (theme !== undefined && theme !== "false") {
+    options.theme = theme;
+  }
+  
+  if (sort !== "created_at") {
+    options.orderByFields = "rating";
+  } else{
+    options.orderByFields = "created_at";
+  }
+  
+  if (order === "DESC"){
+    options.order = "DESC";
+  } else{
+    options.order = "ASC";
+  }
+  
+  if (search !== undefined && search !== 'false') {
+    options.search = search;
+  }
 
-    
-    if (category !== undefined && category !== "false") {
-      options.category = category;
-    }
-    
-    if (theme !== undefined && theme !== "false") {
-      options.theme = theme;
-    }
-    
-    if (sort !== "created_at") {
-      options.orderByFields = "rating";
-    } else{
-      options.orderByFields = "created_at";
-    }
-    
-    if (order === "DESC"){
-      options.order = "DESC";
-    } else{
-      options.order = "ASC";
-    }
-    
-    if (search !== undefined) {
-      options.search = search;
-    }
+  options.page = parseInt(page, 10);
+  if (typeof options.page !== 'number'){
+    options.page = 1
+  }
 
-    options.page = parseInt(page, 10);
-    if (typeof options.page !== 'number'){
-      options.page = 1
-    }
+  if (options.page === 1){
+    options.page = 0;
+  } else{
+    options.page = (options.page - 1) * options.nbArticles;
+  }
     
-    // nombre d'article à afficher pour le moment
-    options.nbArticles = 10;
-    
-    console.log(options);
-    return options;
-  };
+  return options;
+};

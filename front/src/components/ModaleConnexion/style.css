@@ -1,0 +1,51 @@
+.modale-blur{
+    background: linear-gradient(black, white, black);
+    opacity: 0.6;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    z-index: 2;
+}
+
+.modale{
+    border: black solid 1px;
+    background-color: white;
+    top: 30%;
+    left: 10%;
+    position: fixed;
+    width: 80%;
+    padding: 1rem;
+    border-radius: 5px;
+    z-index: 3;
+}
+.modale-header-radio, .modale-main-input{
+    margin: 0.8rem 0;
+}
+.modale-header-radio{
+    display: flex;
+    justify-content: space-around;
+}
+.radio-container{
+    display: flex;
+}
+.header-radio{
+    width: 18px;
+    height: 18px;
+    margin-left: 0.5rem;
+}
+.modale-main-input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.modale-main-input input{
+    padding-left: 1rem;
+}
+.modale-main-input input, #modal-btn-submit{
+    margin: 0.7rem 0;
+    outline: none;
+}
+
+.modale-main-input input:focus{
+    border: orangered solid 1px;
+}

@@ -428,7 +428,7 @@ INSERT INTO "article" ("title", "content", "url_picture", "author_id", "category
     Integer bibendum, mauris at luctus pulvinar, elit sapien vestibulum nulla, quis semper lacus lorem sit amet velit. 
     Mauris luctus augue vel justo ultrices dapibus. Nunc mi mi, pellentesque eu libero non, euismod pulvinar nunc. 
     Vivamus in sapien scelerisque, lobortis lorem non, feugiat mi. Nulla eu nibh sit amet dolor vulputate faucibus a eu diam. 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'nourrir_grenouilles.jpeg', 2, 3, null),
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'nourrir_grenouilles.jpeg', 2, 2, 3),
 
 
     ('Les phases de Python regius', 
@@ -558,7 +558,7 @@ INSERT INTO "article" ("title", "content", "url_picture", "author_id", "category
     Integer bibendum, mauris at luctus pulvinar, elit sapien vestibulum nulla, quis semper lacus lorem sit amet velit. 
     Mauris luctus augue vel justo ultrices dapibus. Nunc mi mi, pellentesque eu libero non, euismod pulvinar nunc. 
     Vivamus in sapien scelerisque, lobortis lorem non, feugiat mi. Nulla eu nibh sit amet dolor vulputate faucibus a eu diam. 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'manipuler_animaux.jpeg', 9, 1, 7);
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'manipuler_animaux.jpeg', 9, 3, null);
 
 INSERT INTO "photo" ("location", "url_picture", "article_id", "author_id") VALUES
     ('article', './img/article/img1.png', 1, 1),

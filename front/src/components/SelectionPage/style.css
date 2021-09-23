@@ -11,6 +11,12 @@
     color: white;
     font-weight: 700;
     font-size: 1.5rem;
+    margin: 0 0.2rem;
+    padding: 0 0.3rem;
+}
+.page-selection-link:hover{
+    background-color: black;
+    transition: linear 0.2s;
 }
 .link-disabled{
     pointer-events: none;
