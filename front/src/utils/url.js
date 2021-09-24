@@ -1,4 +1,4 @@
-const utils = {    
+const url = {    
     baseUrl: 'http://localhost:3000/',
 
     getId(){
@@ -9,7 +9,7 @@ const utils = {
     
     getSlug(title){
         return title.toLowerCase().replaceAll(' ', '-');
-    },
-
+    }
 };
-export default utils;
+
+export default url;

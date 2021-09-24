@@ -46,8 +46,11 @@
     outline: none;
 }
 
-.modale-main-input input:focus{
+.input-value_invalid{
     border: orangered solid 1px;
+}
+.input-value_valid{
+    border: green solid 1px;
 }
 .text-error{
     color: maroon;

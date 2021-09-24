@@ -1,7 +1,8 @@
 import './style.css';
 import { Fragment, useState, useEffect, useRef } from 'react';
 import ButtonGreen from "../ButtonGreen";
-import utils from  '../../utils';
+import url from  '../../utils/url';
+import RegexUtils from  '../../utils/regexUtils';
 
 function ModaleConnexion({setHideModale}) {
     const [ chooseOption, setChooseOption ] = useState('se connecter');
@@ -13,14 +14,13 @@ function ModaleConnexion({setHideModale}) {
         for (const input of formElt.current){
             input.value = ''
         }
-        
         setInfosUser({});
     }, [chooseOption])
 
     const connected = async (e) => {
         e.preventDefault();
-        const fetchPost = async (url, data) =>{
-            const response = await fetch(`${utils.baseUrl}${url}`, {
+        const fetchPost = async (link, data) =>{
+            const response = await fetch(`${url.baseUrl}${link}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
@@ -52,6 +52,19 @@ function ModaleConnexion({setHideModale}) {
         }
     };
 
+    const controlForm = (e, input) =>{
+        if (RegexUtils.controlForm(input, e.target.value)){
+            const result = {};
+            result[input] = e.target.value;
+            setInfosUser({...infosUser, ...result});
+        } else{
+            const result = {};
+            result[input] = 'invalid';
+            setInfosUser({...infosUser, ...result});
+        }
+        console.log(e.target.value, input, infosUser);
+    };
+
   return (
     <>
         <div className="modale-blur" onClick={(e) => setHideModale(true)}>
@@ -80,19 +93,21 @@ function ModaleConnexion({setHideModale}) {
                 {chooseOption === "s'inscrire" ? 
                 <>
                 <input type="text" name="username" id="input-register-username" placeholder="Pseudo"
-                onChange={(e) => setInfosUser({...infosUser, pseudo: e.target.value})}/>
+                onChange={(e) => controlForm(e, 'username')}/>
                 <input type="text" name="email" id="input-register-email" placeholder="Email"
-                onChange={(e) => setInfosUser({...infosUser, email: e.target.value})}/>
+                onChange={(e) => controlForm(e, 'email')}/>
                 <input type="text" name="password" id="input-register-password" placeholder="Password"
-                onChange={(e) => setInfosUser({...infosUser, password: e.target.value})}/>
+                onChange={(e) => controlForm(e, 'password')}/>
                 <ButtonGreen value="S'inscrire"/>
                 </>
                 : 
                 <>
                 <input type="text" name="email" id="input-login-email" placeholder="Email" 
-                onChange={(e) => setInfosUser({...infosUser, email: e.target.value})} />
+                className={infosUser.email === undefined ? '' : infosUser.email === 'invalid' ? 'input-value_invalid' : 'input-value_valid'}
+                onChange={(e) => controlForm(e, 'email')} />
                 <input type="text" name="password" id="input-login-password" placeholder="Mot de passe" 
-                onChange={(e) => setInfosUser({...infosUser, password: e.target.value})} />
+                className={infosUser.password === undefined ? '' : infosUser.password === 'invalid' ? 'input-value_invalid' : 'input-value_valid'}
+                onChange={(e) => controlForm(e, 'password')} />
                 {responseConnexion && <p className="text-error">{responseConnexion}</p>}
                 <ButtonGreen value="Se connecter" />
                 </>

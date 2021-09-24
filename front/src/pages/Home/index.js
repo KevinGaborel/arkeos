@@ -1,7 +1,7 @@
 import './style.css';
 import { useEffect, useState, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
-import utils from  '../../utils';
+import url from  '../../utils/url';
 import CardArticle from '../../components/CardArticle';
 import FilterNav from '../../components/FilterNav';
 import SelectionPage from '../../components/SelectionPage';
@@ -10,7 +10,7 @@ function Home() {
   const [ cardData, setDataCard ] = useState([]);
   const [ dataLoading, setDataLoading ] = useState(false);
   const [ numberResults, setNumberResults ] = useState();
-  
+
   let { page } = useParams();
   if (page){
     page = parseInt(page, 10);
@@ -32,7 +32,7 @@ function Home() {
           query = query !== undefined ? query + `&${key}=${optionsFilter[key]}` : `?${key}=${optionsFilter[key]}`;
         }
         
-        const response = await fetch(`${utils.baseUrl}articles${query}`);
+        const response = await fetch(`${url.baseUrl}articles${query}`);
         const data = await response.json();
         
         setDataCard(data.articles);
@@ -54,7 +54,7 @@ function Home() {
         <FilterNav optionsFilter={optionsFilter} setOptionsFilter={setOptionsFilter} 
     	  numberResults={numberResults} dataLoading={dataLoading} />
     	  <section id='card-container'>
-    	    {cardData.map((card) => <a href={`/article/${utils.getSlug(card.title)}-${card.id}`} key={card.id}><CardArticle  data={card} /></a>) }
+    	    {cardData.map((card) => <a href={`/article/${url.getSlug(card.title)}-${card.id}`} key={card.id}><CardArticle  data={card} /></a>) }
     	  </section>
       <SelectionPage numberResults={numberResults} page={page}/>
     	</main>

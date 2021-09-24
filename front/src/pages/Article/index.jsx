@@ -1,15 +1,15 @@
 import './style.css';
 import { useEffect, useState } from 'react';
-import utils from  '../../utils';
+import url from  '../../utils/url';
 
 function Article() {
   const [ dataArticle, setDataArticle ] = useState([]);
-  const idArticle = utils.getId();
+  const idArticle = url.getId();
 
   useEffect(() => {
       (async function () {
         try {
-          const response = await fetch(`${utils.baseUrl}articles/${idArticle}`);
+          const response = await fetch(`${url.baseUrl}articles/${idArticle}`);
           let data = await response.json();
           data.content = data.content.split('   ');
           setDataArticle(data);
@@ -26,7 +26,7 @@ function Article() {
         <h2>
           {dataArticle.title}
         </h2>
-        {dataArticle.url_picture && <img className='article-img' src={`${utils.baseUrl}image/${dataArticle.url_picture}`} alt=""/>}
+        {dataArticle.url_picture && <img className='article-img' src={`${url.baseUrl}image/${dataArticle.url_picture}`} alt=""/>}
 
         {dataArticle.content && dataArticle.content.map((p, index) => <p className='article-paragraph' key={index}>{p}</p>)}
       </article>
