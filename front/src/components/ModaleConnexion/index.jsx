@@ -7,6 +7,7 @@ import RegexUtils from  '../../utils/regexUtils';
 function ModaleConnexion({setHideModale}) {
     const [ chooseOption, setChooseOption ] = useState('se connecter');
     const [ infosUser, setInfosUser ] = useState({});
+    const [ sendDisabled, setSendDisabled ] = useState(true);
     const [ responseConnexion, setResponseConnexion ] = useState(false);
     const formElt = useRef(null);
     
@@ -15,7 +16,27 @@ function ModaleConnexion({setHideModale}) {
             input.value = ''
         }
         setInfosUser({});
-    }, [chooseOption])
+        setSendDisabled(true);
+    }, [chooseOption]);
+
+    useEffect (() => {
+        if(chooseOption === 'se connecter'){
+            if(Object.keys(infosUser).length !== 2){
+                return;
+            }
+        } else{
+            if(Object.keys(infosUser).length !== 3){
+                return;
+            }
+        }
+        for (const value in infosUser){
+            if(value === undefined || !infosUser[value]){
+                setSendDisabled(true);
+                return;
+            }
+        }
+        setSendDisabled(false);
+    }, [infosUser])
 
     const connected = async (e) => {
         e.preventDefault();
@@ -28,7 +49,6 @@ function ModaleConnexion({setHideModale}) {
             return response
         }
         try {
-            console.log(infosUser, chooseOption);
             if (chooseOption === 'se connecter'){
                 const response = await fetchPost('login', infosUser);
                 const user = await response.json();
@@ -59,7 +79,7 @@ function ModaleConnexion({setHideModale}) {
             setInfosUser({...infosUser, ...result});
         } else{
             const result = {};
-            result[input] = 'invalid';
+            result[input] = false;
             setInfosUser({...infosUser, ...result});
         }
         console.log(e.target.value, input, infosUser);
@@ -93,23 +113,31 @@ function ModaleConnexion({setHideModale}) {
                 {chooseOption === "s'inscrire" ? 
                 <>
                 <input type="text" name="username" id="input-register-username" placeholder="Pseudo"
-                onChange={(e) => controlForm(e, 'username')}/>
-                <input type="text" name="email" id="input-register-email" placeholder="Email"
-                onChange={(e) => controlForm(e, 'email')}/>
-                <input type="text" name="password" id="input-register-password" placeholder="Password"
-                onChange={(e) => controlForm(e, 'password')}/>
-                <ButtonGreen value="S'inscrire"/>
+                className={infosUser.username === undefined ? '' : infosUser.username === false ? 'input-value_invalid' : 'input-value_valid'}
+                onChange={(e) => controlForm(e, 'username')} minLength="5" maxLength="20" required/>
+
+                <input type="email" name="email" id="input-register-email" placeholder="Email"
+                className={infosUser.email === undefined ? '' : infosUser.email === false ? 'input-value_invalid' : 'input-value_valid'}
+                onChange={(e) => controlForm(e, 'email')} minLength="5" maxLength="320" required/>
+
+                <input type="password" name="password" id="input-register-password" placeholder="Password"
+                className={infosUser.password === undefined ? '' : infosUser.password === false ? 'input-value_invalid' : 'input-value_valid'}
+                onChange={(e) => controlForm(e, 'password')} minLength="8" maxLength="40" required/>
+
+                <ButtonGreen value="S'inscrire" disabled={sendDisabled}/>
                 </>
                 : 
                 <>
-                <input type="text" name="email" id="input-login-email" placeholder="Email" 
-                className={infosUser.email === undefined ? '' : infosUser.email === 'invalid' ? 'input-value_invalid' : 'input-value_valid'}
-                onChange={(e) => controlForm(e, 'email')} />
-                <input type="text" name="password" id="input-login-password" placeholder="Mot de passe" 
-                className={infosUser.password === undefined ? '' : infosUser.password === 'invalid' ? 'input-value_invalid' : 'input-value_valid'}
-                onChange={(e) => controlForm(e, 'password')} />
+                <input type="email" name="email" id="input-login-email" placeholder="Email" 
+                className={infosUser.email === undefined ? '' : infosUser.email === false ? 'input-value_invalid' : 'input-value_valid'}
+                onChange={(e) => controlForm(e, 'email')} minLength="5" maxLength="320" required/>
+
+                <input type="password" name="password" id="input-login-password" placeholder="Mot de passe" 
+                className={infosUser.password === undefined ? '' : infosUser.password === false ? 'input-value_invalid' : 'input-value_valid'}
+                onChange={(e) => controlForm(e, 'password')} minLength="8" maxLength="40" required/>
+
                 {responseConnexion && <p className="text-error">{responseConnexion}</p>}
-                <ButtonGreen value="Se connecter" />
+                <ButtonGreen value="Se connecter" disabled={sendDisabled}/>
                 </>
                 }
                 </div>

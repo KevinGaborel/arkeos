@@ -1,9 +1,9 @@
 import './style.css';
 import { Fragment, useState, useEffect } from 'react';
 
-function ButtonGreen({value}) {
+function ButtonGreen({value, disabled}) {
   return (
-    <button type="submit" id="modal-btn-submit">{value}</button>
+    <button type="submit" className="modal-btn-submit" disabled={disabled}>{value}</button>
   );
 }
 
