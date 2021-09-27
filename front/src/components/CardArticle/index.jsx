@@ -28,14 +28,14 @@ function CardArticle({data}) {
               Le {data.created_at}
             </div> 
             <div className='cards-top_center'>
-              {data.url_picture !== undefined && data.url_picture !== null && 
+              {data.author_picture !== undefined && data.author_picture !== null && data.author_picture !== "" &&
               <img src={`${url.baseUrl}image/${data.author_picture}`} alt="L'auteur de l'article" className="card-author-img"/>}
               {data.author}
             </div>
           </div>
           <h2 className='cards-text_center' >{data.title}</h2>
   
-          {data.url_picture !== undefined && data.url_picture !== null ? 
+          {data.url_picture !== undefined && data.url_picture !== null && data.url_picture !== "" ? 
           <img src={`${url.baseUrl}image/${data.url_picture}`} alt={`Un(e) ou des ${data.category_name}`} className='card-img'/>
           : <div className='card-img'></div>}
           
