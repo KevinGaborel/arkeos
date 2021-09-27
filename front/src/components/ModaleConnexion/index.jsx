@@ -36,7 +36,7 @@ function ModaleConnexion({setHideModale}) {
             }
         }
         setSendDisabled(false);
-    }, [infosUser])
+    }, [infosUser, chooseOption]);
 
     const connected = async (e) => {
         e.preventDefault();
@@ -82,7 +82,6 @@ function ModaleConnexion({setHideModale}) {
             result[input] = false;
             setInfosUser({...infosUser, ...result});
         }
-        console.log(e.target.value, input, infosUser);
     };
 
   return (
@@ -115,6 +114,9 @@ function ModaleConnexion({setHideModale}) {
                 <input type="text" name="username" id="input-register-username" placeholder="Pseudo"
                 className={infosUser.username === undefined ? '' : infosUser.username === false ? 'input-value_invalid' : 'input-value_valid'}
                 onChange={(e) => controlForm(e, 'username')} minLength="5" maxLength="20" required/>
+                <div className="modale-main-input-container">
+                    <span className="modale-main-input-rules" >Le pseudo doit contenir au moins 5 caractères</span>
+                </div>
 
                 <input type="email" name="email" id="input-register-email" placeholder="Email"
                 className={infosUser.email === undefined ? '' : infosUser.email === false ? 'input-value_invalid' : 'input-value_valid'}
@@ -123,6 +125,12 @@ function ModaleConnexion({setHideModale}) {
                 <input type="password" name="password" id="input-register-password" placeholder="Password"
                 className={infosUser.password === undefined ? '' : infosUser.password === false ? 'input-value_invalid' : 'input-value_valid'}
                 onChange={(e) => controlForm(e, 'password')} minLength="8" maxLength="40" required/>
+                <ul className="modale-main-input-container">
+                    <li className="modale-main-input-rules">Il doit contenir au moins 8 caractères</li>
+                    <li className="modale-main-input-rules">Contenir au moins une lettre</li>
+                    <li className="modale-main-input-rules">Contenir au moins un nombre</li>
+                    <li className="modale-main-input-rules">Contenir au moins un caractère spéciale</li>
+                </ul>
 
                 <ButtonGreen value="S'inscrire" disabled={sendDisabled}/>
                 </>

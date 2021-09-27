@@ -1,5 +1,4 @@
 import './style.css';
-import { Fragment, useState, useEffect } from 'react';
 
 function ButtonGreen({value, disabled}) {
   return (

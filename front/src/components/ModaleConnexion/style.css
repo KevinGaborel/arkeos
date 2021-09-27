@@ -11,9 +11,9 @@
     border: black solid 1px;
     background-color: white;
     top: 30%;
-    left: 10%;
+    left: 5%;
     position: fixed;
-    width: 80%;
+    width: 90%;
     padding: 1rem;
     border-radius: 5px;
     z-index: 3;
@@ -40,6 +40,8 @@
 }
 .modale-main-input input{
     padding-left: 1rem;
+    width: 80%;
+    height: 1.5rem;
 }
 .modale-main-input input, #modal-btn-submit{
     margin: 0.7rem 0;
@@ -51,6 +53,15 @@
 }
 .input-value_valid{
     border: green solid 1px;
+}
+.modale-main-input-container{
+    display: flex;
+    align-items: flex-start;
+    margin: 0 0 0.8rem 0;
+}
+.modale-main-input-rules{
+    font-size: 0.8rem;
+    margin: 0;
 }
 .text-error{
     color: maroon;
