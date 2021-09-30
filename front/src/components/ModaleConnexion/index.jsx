@@ -1,10 +1,11 @@
 import './style.css';
 import { Fragment, useState, useEffect, useRef } from 'react';
 import ButtonGreen from "../ButtonGreen";
-import url from  '../../utils/url';
 import RegexUtils from  '../../utils/regexUtils';
+import FetchPost from '../../utils/fetchPost';
 
-function ModaleConnexion({setHideModale}) {
+
+function ModaleConnexion({setHideModale, setUser}) {
     const [ chooseOption, setChooseOption ] = useState('se connecter');
     const [ infosUser, setInfosUser ] = useState({});
     const [ sendDisabled, setSendDisabled ] = useState(true);
@@ -40,31 +41,26 @@ function ModaleConnexion({setHideModale}) {
 
     const connected = async (e) => {
         e.preventDefault();
-        const fetchPost = async (link, data) =>{
-            const response = await fetch(`${url.baseUrl}${link}`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            })
-            return response
-        }
         try {
             if (chooseOption === 'se connecter'){
-                const response = await fetchPost('login', infosUser);
+                const response = await FetchPost('login', infosUser);
                 const user = await response.json();
 
                 if (response.status === 403){
                     setResponseConnexion(user);
                 }
-                console.log(user, response.status);
+                setUser(user);
+                window.location = window.location.href;
             } else{
-                const response = await fetchPost('signin', infosUser);
+                const response = await FetchPost('signin', infosUser);
                 const user = await response.json();
 
                 if (response.status === 403){
                     setResponseConnexion(user);
                 }
                 console.log(user, response.status);
+
+                //todoo crée un message comme quoi l'inscription est bien faite et ou redirection avec la modale onglet connexion
             }
 
         } catch (error) {
@@ -122,7 +118,7 @@ function ModaleConnexion({setHideModale}) {
                 className={infosUser.email === undefined ? '' : infosUser.email === false ? 'input-value_invalid' : 'input-value_valid'}
                 onChange={(e) => controlForm(e, 'email')} minLength="5" maxLength="320" required/>
 
-                <input type="password" name="password" id="input-register-password" placeholder="Password"
+                <input type="password" name="password" id="input-register-password" placeholder="Mot de passe"
                 className={infosUser.password === undefined ? '' : infosUser.password === false ? 'input-value_invalid' : 'input-value_valid'}
                 onChange={(e) => controlForm(e, 'password')} minLength="8" maxLength="40" required/>
                 <ul className="modale-main-input-container">

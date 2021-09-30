@@ -53,8 +53,9 @@ header{
     transform: scale(1.05);
     transition: linear 0.2s;
 }
+
 /* nav */
-nav{
+#header-menu{
     background-color: rgb(65, 75, 7);
     position: fixed;
     height: 100%;
@@ -62,17 +63,21 @@ nav{
     padding: 1rem;
     font-size: 1rem;
 }
-ul{
+#header-menu ul{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    width: 100%;
+    justify-content: center;
+    height: calc(100% - 4rem);
 }
-ul a{
+#header-menu ul a{
     text-decoration: none;
     color: white;
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+    font-size: 2rem;
 }
-ul li{
-    margin: 0.5rem 0 0.5rem 1rem;
+#header-menu ul li{
     list-style: none;
 }

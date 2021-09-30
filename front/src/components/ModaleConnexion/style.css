@@ -56,8 +56,11 @@
 }
 .modale-main-input-container{
     display: flex;
-    align-items: flex-start;
     margin: 0 0 0.8rem 0;
+    flex-direction: column;
+    list-style: none;
+    width: 80%;
+    text-align: center;
 }
 .modale-main-input-rules{
     font-size: 0.8rem;

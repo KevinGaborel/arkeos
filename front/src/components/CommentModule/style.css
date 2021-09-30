@@ -4,9 +4,15 @@
     flex-direction: column;
     align-items: center;
 }
+#comment-article-form{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-items: center;
+}
 #comment{
     resize: vertical;
-    width: 90%;
+    width: 100%;
     border-radius: 5px;
     padding: 0.5rem;
     margin-bottom: 0.5rem;

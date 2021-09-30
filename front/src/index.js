@@ -13,6 +13,9 @@ ReactDOM.render(
     <Router>
       <Header />
       <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
         <Route exact path="/accueil/">
           <Home />
         </Route>
