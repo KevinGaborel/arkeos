@@ -3,6 +3,7 @@ import url from  '../../utils/url';
 import Score from '../Score';
 import styled from 'styled-components';
 import Loader from '../Loader';
+import { useEffect } from 'react';
 
 const CardTheme = styled.div`
   background-color: ${props => props.theme_color};
@@ -10,8 +11,11 @@ const CardTheme = styled.div`
   border-radius: 7px;
 `;
 
-function CardArticle({data}) {
-  
+function CardArticle({data, rating, setRating}) {
+  useEffect(() => {
+    console.log('tomate');
+  }, [rating]);
+
   return (
     <article className='cards'>
         {data.url_picture !== undefined ? 
@@ -41,7 +45,7 @@ function CardArticle({data}) {
           
           {Array.isArray(data.content) ? data.content.map((p, index) => <p className='article-paragraph' key={index}>{p}</p>)
           : <p className='cards-text_center' >{data.content}</p>}
-          <Score score={data.rating}/>
+          <Score score={data.rating} setRating={setRating} />
         </>
       :
 

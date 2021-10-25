@@ -18,7 +18,7 @@ router.use(authenticateToken);
 
 
 // vote +1 à un article
-router.post('/:id/raiting', articleController.addRating);
+router.post('/:id/rating', articleController.addRating);
 
 // add comment
 router.post('/:id/comment', articleController.addComment);

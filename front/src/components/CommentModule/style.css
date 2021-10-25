@@ -33,9 +33,13 @@
 .comment-article-author{
     color: white;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding: 0.3rem;
+}
+.comment-article-img-container{
+    display: flex;
+    align-items: center;
 }
 .comment-article-content{
     background-color: white;

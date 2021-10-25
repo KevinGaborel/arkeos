@@ -1,10 +1,9 @@
 import './style.css';
 
-function Score({score}) {
- 
+function Score({score, setRating}) {
 
   return (
-  <div className='article-score' >Score: {score !== null ? score : 0}</div>
+  <button className='article-score' onClick={(e) => setRating()}> {score !== null ? score : 0} </button>
   );
 }
 

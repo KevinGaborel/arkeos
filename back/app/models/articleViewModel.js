@@ -26,6 +26,7 @@ class ArticleViewModel extends CoreModel {
            const result = await client.query(`SELECT view_article.*,
            ARRAY_AGG(DISTINCT "comment"."content") as "comment",
            ARRAY_AGG(DISTINCT "comment"."author_id") as "author_id_comment",
+           ARRAY_AGG(TO_CHAR("comment"."created_at", 'DD-MM-YYYY HH24:MI')) as "comment_created_at",
            ARRAY_AGG(DISTINCT "user_view"."username") as "author_comment",
            ARRAY_AGG("user_view"."profile_picture") as "author_picture_comment",
            ARRAY_AGG(DISTINCT "photo"."url_picture") as "photo"

@@ -23,7 +23,6 @@ function CommentModule(data) {
         textAreaValue.length > 10 && localToken && localUser ? setButtonDisabled(false) : setButtonDisabled(true);
     }, [textAreaValue]);
 
-
   return (
       <section id="comment-article">
           {data.comment === undefined ? 
@@ -37,11 +36,22 @@ function CommentModule(data) {
                 <div className="comment-article-list-container">
                     {data.comment[0] !== null && data.comment.map((comment, index) => 
                         <div key={index} className="comment-article-container">
-                            <span className="comment-article-author"> {data.authorPicture && 
-                                <img src={`${url.baseUrl}image/${data.authorPicture[index]}`} alt="L'auteur du commentaire" className="card-author-img"/>} 
-                                {data.author[index]}
-                            </span>
-                            <p className="comment-article-content">{comment}</p></div>)}
+                            <div>
+                                <span className="comment-article-author"> 
+                                    {data.authorPicture && 
+                                        <>
+                                            <div className="comment-article-img-container">
+                                                <img src={`${url.baseUrl}image/${data.authorPicture[index]}`} 
+                                                alt="L'auteur du commentaire" className="card-author-img"/>
+                                                {data.author[index]}
+                                            </div> 
+                                            {data.createdAt[index]}
+                                        </>
+                                    }
+                                </span>
+                            </div>
+                            <p className="comment-article-content">{comment}</p>
+                        </div>)}
                 </div>
             </>}
       </section>

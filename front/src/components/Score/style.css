@@ -4,7 +4,17 @@
     border-radius: 5px;
     width: 8rem;
     height: 2rem;
+    font-weight: 500;
+    font-size: 1.6rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    background-color: transparent;
+    outline: none;
+}
+.article-score:hover{
+    background-color: #6B8E23;
+    transform: scale(1.1);
+    transition-duration: 0.2s;
+    color: white;
 }

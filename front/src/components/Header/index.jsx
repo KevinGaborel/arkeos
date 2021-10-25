@@ -16,7 +16,7 @@ function Header() {
   useEffect(()=>{
     if (user.token && user.user){
       localStorage.setItem('token', user.token);
-      localStorage.setItem('user', user.user);
+      localStorage.setItem('user', `${user.user.id} ${user.user.username}`);
     }
   }, [user])
 
