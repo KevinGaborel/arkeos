@@ -188,16 +188,37 @@ exports.addComment = async (request, response, next) => {
       return `Not connected`;
     }
 
+    if (request.body.comment.length < 10 || typeof request.body.comment.length === 'undefined'){
+      return 'Comment size is too short';
+    }
+
     const data = {};
     data.article_id = parseInt(request.params.id, 10);
     data.author_id = request.user;
-    data.content = request.body.content;
-
-    console.log(data);
+    data.content = request.body.comment;
 
     const comment = await CommentModel.addComment(data);
 
     response.status(200).json({ comment });
+  } catch (error) {
+    console.trace(error);
+    response
+      .status(500)
+      .json({ error: `Server error, please contact an administrator` });
+  }
+};
+
+exports.getComment = async (request, response, next) => {
+  try {
+    const idArticle = parseInt(request.params.id, 10);
+
+    const comment = await CommentModel.getComment(idArticle);
+
+    if (!comment) {
+      return next();
+    }
+
+    response.json(comment);
   } catch (error) {
     console.trace(error);
     response

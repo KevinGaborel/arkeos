@@ -13,7 +13,6 @@ const CardTheme = styled.div`
 
 function CardArticle({data, rating, setRating}) {
   useEffect(() => {
-    console.log('tomate');
   }, [rating]);
 
   return (

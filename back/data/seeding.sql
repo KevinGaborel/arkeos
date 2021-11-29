@@ -1,12 +1,12 @@
 BEGIN;
 
 INSERT INTO "theme" ("name", "color") VALUES 
-    ('Soins et pathologies', '#FFAEBC'),
-    ('Terrarium', '#FFE9E4'),
-    ('Alimentation', '#FBE7C6'),
-    ('Génétique', '#A0E7E5'),
+    ('Soins et pathologies', '#FC7E93'),
+    ('Terrarium', '#FF876B'),
+    ('Alimentation', '#FFB232'),
+    ('Génétique', '#35E7E2'),
     ('Anatomie et biologie', '#F51720'),
-    ('Législation', '#FFB067'),
+    ('Législation', '#FF9839'),
     ('Biotope et histoire naturelle', '#FA26A0');
 
 INSERT INTO "category" ("name") VALUES

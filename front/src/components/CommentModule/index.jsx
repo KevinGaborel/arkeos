@@ -3,56 +3,102 @@ import Loader from '../Loader';
 import ButtonGreen from '../ButtonGreen';
 import url from '../../utils/url';
 import { useEffect, useState } from 'react';
-import FetchPost from '../../utils/fetchPost';
+const axios = require('axios');
 
-function CommentModule(data) {
+function CommentModule() {
     const [ textAreaValue, setTextAreaValue ] = useState('');
     const [ buttonDisabled, setButtonDisabled ] = useState(true);
+    const [ data, setData ] = useState();
+    const [ isSend, setIsSend ] = useState(false);
 
     let localToken = localStorage.getItem("token");
-    let localUser = localStorage.getItem("user");
-    
+    let localName = localStorage.getItem("username");
+    let localId = localStorage.getItem("id");
 
-    function postComment(e){
+    async function postComment(e){
         e.preventDefault();
-        //todoo add token in body for back
-        FetchPost(`${url.getId()}/comment`, textAreaValue);
+
+        try {
+            const response = await axios.post(`${url.baseUrl}articles/${url.getId()}/comment`,
+                {
+                  comment: textAreaValue,
+                },
+                {
+                  headers: {
+                    authorization: localToken,
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                }
+            });
+
+            const result = await response;
+            
+            setIsSend(true);
+            setTextAreaValue("");
+        } catch (error) {
+            console.log(error);
+        }
+        
     }
     
     useEffect(() => {
-        textAreaValue.length > 10 && localToken && localUser ? setButtonDisabled(false) : setButtonDisabled(true);
+        (async () => {
+            try {
+                setIsSend(false);
+                const response = await axios.get(`${url.baseUrl}articles/${url.getId()}/comment`);
+                const result = await response;
+
+                setData(response.data);
+                
+            } catch (error) {
+                console.log(error);
+            }
+        })();
+    }, [isSend]);
+    
+    useEffect(() => {
+        textAreaValue.length > 10 && localToken && localId ? setButtonDisabled(false) : setButtonDisabled(true);
     }, [textAreaValue]);
 
   return (
       <section id="comment-article">
-          {data.comment === undefined ? 
+          {data === undefined || data[0].comment === undefined ? 
             <Loader />
           :
             <>
                 <form id="comment-article-form" onSubmit={(e) => postComment(e)}>
-                    <textarea name="comment" id="comment" rows="5" onChange={(e) => setTextAreaValue(e.target.value)} minLength='10' required></textarea>
+                    <textarea name="comment" id="comment" rows="5" 
+                    onChange={(e) => setTextAreaValue(e.target.value)} 
+                    minLength='10' required disabled={localId && false}
+                    value={textAreaValue}
+                    >
+                    </textarea>
                     <ButtonGreen value="Commenter" disabled={buttonDisabled} />
                 </form>
-                <div className="comment-article-list-container">
-                    {data.comment[0] !== null && data.comment.map((comment, index) => 
-                        <div key={index} className="comment-article-container">
-                            <div>
-                                <span className="comment-article-author"> 
-                                    {data.authorPicture && 
-                                        <>
-                                            <div className="comment-article-img-container">
-                                                <img src={`${url.baseUrl}image/${data.authorPicture[index]}`} 
-                                                alt="L'auteur du commentaire" className="card-author-img"/>
-                                                {data.author[index]}
-                                            </div> 
-                                            {data.createdAt[index]}
-                                        </>
-                                    }
-                                </span>
-                            </div>
-                            <p className="comment-article-content">{comment}</p>
-                        </div>)}
-                </div>
+                
+                {data[0].comment !== null &&
+                    <div className="comment-article-list-container">
+                        {data[0].comment[0] !== null && data.map(comment => 
+                            <div key={comment.id} className="comment-article-container">
+                                <div>
+                                    <span className="comment-article-author"> 
+                                        {comment.author_picture && 
+                                            <>
+                                                <div className="comment-article-img-container">
+                                                    <img src={`${url.baseUrl}image/${comment.author_picture}`} 
+                                                    alt="L'auteur du commentaire" className="card-author-img"/>
+                                                    {comment.author_comment}
+                                                </div> 
+                                                {comment.created_at}
+                                            </>
+                                        }
+                                    </span>
+                                </div>
+                                <p className="comment-article-content">{comment.comment}</p>
+                            </div>)}
+
+                    </div>
+                }
             </>}
       </section>
   );

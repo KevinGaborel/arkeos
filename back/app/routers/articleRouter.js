@@ -13,6 +13,8 @@ router.get('/', articleController.getAllArticles);
 // affiche un article
 router.get('/:id', articleController.showArticle);
 
+// get all comment for a article
+router.get('/:id/comment', articleController.getComment);
 
 router.use(authenticateToken);
 
@@ -22,6 +24,7 @@ router.post('/:id/rating', articleController.addRating);
 
 // add comment
 router.post('/:id/comment', articleController.addComment);
+
 
 
 // ajoute un article

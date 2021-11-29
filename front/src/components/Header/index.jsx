@@ -8,21 +8,25 @@ import ModaleConnexion from '../ModaleConnexion';
 function Header() {
   const [ hideMenu, setHideMenu ] = useState(true);
   const [ hideModale, setHideModale ] = useState(true);
-  const [ user, setUser] = useState({});
+  const [ infos, setInfos] = useState({});
 
   let localToken = localStorage.getItem("token");
-  let localUser = localStorage.getItem("user");
+  let localId = localStorage.getItem("id");
+  let localName = localStorage.getItem("username");
 
   useEffect(()=>{
-    if (user.token && user.user){
-      localStorage.setItem('token', user.token);
-      localStorage.setItem('user', `${user.user.id} ${user.user.username}`);
+    if (infos.token && infos.user){
+      localStorage.setItem('token', infos.token);
+      localStorage.setItem('username', infos.user.username);
+      localStorage.setItem('id', infos.user.id);
     }
-  }, [user])
+  }, [infos])
 
   function logout(){
     localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    localStorage.removeItem('username');
+    localStorage.removeItem('id');
+
     window.location = "/";
   };
 
@@ -33,10 +37,6 @@ function Header() {
       setHideMenu(true);
     }
   };
-
-  if (user){
-    console.log(user);
-  }
 
   return (
     <React.Fragment>
@@ -57,7 +57,7 @@ function Header() {
             }
           </button>
           <Link to="/accueil"><img src={logo} alt="Le logo du site arkéos" id='header-logo'/></Link>
-          {localToken ? <span id="link-modale-connexion" onClick={(e) => logout()} >Se déconnecter</span> 
+          {localToken && localId ? <span id="link-modale-connexion" onClick={(e) => logout()} >Se déconnecter</span> 
           : <span id="link-modale-connexion" onClick={(e) => setHideModale(false)} >Se connecter</span>}
         </span>
 
@@ -78,7 +78,7 @@ function Header() {
           </ul>
         </nav>
       </header>
-      {hideModale === false && <ModaleConnexion hideModale={hideModale} setHideModale={setHideModale} setUser={setUser} />}
+      {hideModale === false && <ModaleConnexion hideModale={hideModale} setHideModale={setHideModale} setInfos={setInfos} />}
     </React.Fragment>
   );
 }

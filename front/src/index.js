@@ -11,24 +11,24 @@ import Article from './pages/Article';
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <Header />
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/accueil/">
-          <Home />
-        </Route>
-        <Route exact path="/accueil/pages/:page">
-          <Home />
-        </Route>
-        <Route exact path="/article/:title">
-          <Article />
-        </Route>
-        <Route>
-         <Error />
-        </Route>
-      </Switch>
+        <Header />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/accueil/">
+            <Home />
+          </Route>
+          <Route exact path="/accueil/pages/:page">
+            <Home />
+          </Route>
+          <Route exact path="/article/:title">
+            <Article />
+          </Route>
+          <Route>
+           <Error />
+          </Route>
+        </Switch>
       <Footer />
     </Router>
   </React.StrictMode>,

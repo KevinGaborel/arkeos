@@ -5,7 +5,7 @@ import RegexUtils from  '../../utils/regexUtils';
 import FetchPost from '../../utils/fetchPost';
 
 
-function ModaleConnexion({setHideModale, setUser}) {
+function ModaleConnexion({setHideModale, setInfos}) {
     const [ chooseOption, setChooseOption ] = useState('se connecter');
     const [ infosUser, setInfosUser ] = useState({});
     const [ sendDisabled, setSendDisabled ] = useState(true);
@@ -44,21 +44,24 @@ function ModaleConnexion({setHideModale, setUser}) {
         try {
             if (chooseOption === 'se connecter'){
                 const response = await FetchPost('login', infosUser);
-                const user = await response.json();
+                const result = await response.json();
 
                 if (response.status === 403){
-                    setResponseConnexion(user);
+                    setResponseConnexion(result);
+                    return;
                 }
-                setUser(user);
+
+                setInfos(result);
                 window.location = window.location.href;
+
             } else{
                 const response = await FetchPost('signin', infosUser);
-                const user = await response.json();
+                const result = await response.json();
 
                 if (response.status === 403){
-                    setResponseConnexion(user);
+                    setResponseConnexion(result);
                 }
-                console.log(user, response.status);
+                console.log(result, response.status);
 
                 //todoo crée un message comme quoi l'inscription est bien faite et ou redirection avec la modale onglet connexion
             }

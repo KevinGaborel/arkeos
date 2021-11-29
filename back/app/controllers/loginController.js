@@ -34,7 +34,7 @@ exports.getConnected = async (request, response, next) => {
           id: hash.id,
           username: hash.username,
         };
-        console.log(user);
+        
         response.status(200).json({ token, user });
       }
     });
