@@ -34,7 +34,6 @@ const {controlIfToken} = require('./app/middlewares/members');
 
 app.use(controlIfToken);
 
-console.log("dans l'index");
 // tous les routers
 app.use("/login", loginRouter);
 app.use("/signin", signinRouter);

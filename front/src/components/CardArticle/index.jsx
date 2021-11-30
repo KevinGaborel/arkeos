@@ -11,12 +11,17 @@ const CardTheme = styled.div`
   border-radius: 7px;
 `;
 
-function CardArticle({data, rating, setRating}) {
+const CardStyle = styled.article`
+  width: ${props => props.width};
+  margin: ${props => props.margin};
+`;
+
+function CardArticle({data, rating, setRating, margin, width}) {
   useEffect(() => {
   }, [rating]);
 
   return (
-    <article className='cards'>
+    <CardStyle width={width} margin={margin} className='cards'>
         {data.url_picture !== undefined ? 
           <>
             <div className='cards-top-container'>
@@ -51,7 +56,7 @@ function CardArticle({data, rating, setRating}) {
       <Loader />
       
       }
-    </article>
+    </CardStyle>
   );
 }
 

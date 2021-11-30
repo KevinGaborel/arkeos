@@ -43,7 +43,7 @@ function Article() {
     
     return (
     <main>
-      <CardArticle  data={dataArticle} rating={rating} setRating={setRating} />
+      <CardArticle  data={dataArticle} rating={rating} setRating={setRating} margin={'1rem 0'} width={'90%'} />
       <CommentModule />
     </main>
   );

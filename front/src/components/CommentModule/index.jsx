@@ -19,9 +19,12 @@ function CommentModule() {
         e.preventDefault();
 
         try {
+            //const response = await FetchPost('post', `${url.getId()}/comment`, textAreaValue, localToken);
+            //console.log(response);
+            
             const response = await axios.post(`${url.baseUrl}articles/${url.getId()}/comment`,
                 {
-                  comment: textAreaValue,
+                  content: textAreaValue,
                 },
                 {
                   headers: {
@@ -31,8 +34,6 @@ function CommentModule() {
                 }
             });
 
-            const result = await response;
-            
             setIsSend(true);
             setTextAreaValue("");
         } catch (error) {
@@ -46,7 +47,6 @@ function CommentModule() {
             try {
                 setIsSend(false);
                 const response = await axios.get(`${url.baseUrl}articles/${url.getId()}/comment`);
-                const result = await response;
 
                 setData(response.data);
                 

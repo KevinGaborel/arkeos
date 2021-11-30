@@ -45,3 +45,27 @@
 .card-img{
     width: 100%;
 }
+
+
+/* sur desktop */
+@media screen and (min-width: 750px){
+  .cards{
+    margin: 1rem 1rem;
+    width: 45%;
+  }
+  .card-img{
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 1300px){
+  .cards{
+    width: 30%;
+  }
+}
+
+@media screen and (min-width: 1600px){
+  .cards{
+    width: 20%;
+  }
+}

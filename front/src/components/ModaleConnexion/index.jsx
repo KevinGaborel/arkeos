@@ -41,34 +41,28 @@ function ModaleConnexion({setHideModale, setInfos}) {
 
     const connected = async (e) => {
         e.preventDefault();
-        try {
-            if (chooseOption === 'se connecter'){
-                const response = await FetchPost('login', infosUser);
-                const result = await response.json();
 
-                if (response.status === 403){
-                    setResponseConnexion(result);
-                    return;
-                }
+        if (chooseOption === 'se connecter'){
+            const response = await FetchPost('post', `login`, infosUser);
 
-                setInfos(result);
-                window.location = window.location.href;
-
-            } else{
-                const response = await FetchPost('signin', infosUser);
-                const result = await response.json();
-
-                if (response.status === 403){
-                    setResponseConnexion(result);
-                }
-                console.log(result, response.status);
-
-                //todoo crée un message comme quoi l'inscription est bien faite et ou redirection avec la modale onglet connexion
+            if (response.status === 403){
+                setResponseConnexion(response.data);
+                return;
             }
+            setInfos(response.data);
+            window.location = window.location.href;
 
-        } catch (error) {
-            console.error(error);
+        } else{
+
+            const response = await FetchPost('post', 'signin', infosUser);
+
+            if (response.status === 403){
+                setResponseConnexion(response.data);
+            }
+            console.log(response, response.status);
+            //todoo crée un message comme quoi l'inscription est bien faite et ou redirection avec la modale onglet connexion
         }
+
     };
 
     const controlForm = (e, input) =>{

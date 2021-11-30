@@ -1,8 +1,47 @@
 import url from '../utils/url';
+const axios = require('axios');
 
-const FetchPost = async (link, data, token) =>{
-    console.log(link, data, token);
-    console.log(`${url.baseUrl}${link}`);
+const Axios = async (method, link, body, token) =>{
+    
+    try {
+        switch (method) {
+            case "post":
+                return await axios.post(`${url.baseUrl}${link}`,
+                    body,
+                    {
+                      headers: {
+                        authorization: token ? token : null,
+                        Accept: "application/json",
+                        "Content-Type": "application/json"
+                        }
+                });
+            
+                break;
+
+            case "get":
+                return await axios.get(`${url.baseUrl}${link}`,
+                    body,
+                    {
+                      headers: {
+                        authorization: token ? token : null,
+                        Accept: "application/json",
+                        "Content-Type": "application/json"
+                        }
+                });
+            
+                break;
+        
+            default:
+                break;
+        }
+    } catch (error) {
+        return error.response;
+    }
+
+
+
+
+
     /*
     try {
         const response = await fetch(`${url.baseUrl}${link}`, {
@@ -19,9 +58,8 @@ const FetchPost = async (link, data, token) =>{
     } catch (error) {
         console.error(error)
     }
-    */
-
-   const requestOptions = {
+    
+    const requestOptions = {
         method: 'POST',
         headers: { 
             'Content-Type': 'application/json',
@@ -31,10 +69,13 @@ const FetchPost = async (link, data, token) =>{
         cache: 'default',
         body: JSON.stringify(data)
     };
-
+    
     fetch(`${url.baseUrl}${link}`, requestOptions)
-        .then(response => response.json())
-        .then(data => console.log(data));
+    .then(response => response.json())
+    .then(data => console.log(data));
+    */
+
+
 }
 
-export default FetchPost
+export default Axios

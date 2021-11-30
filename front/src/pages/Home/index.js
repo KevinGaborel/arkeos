@@ -53,9 +53,15 @@ function Home() {
     	<main>
         <FilterNav optionsFilter={optionsFilter} setOptionsFilter={setOptionsFilter} 
     	  numberResults={numberResults} dataLoading={dataLoading} />
+
     	  <section id='card-container'>
-          {cardData[0] !== undefined ? cardData.map((card) => <a href={`/article/${url.getSlug(card.title)}-${card.id}`} key={card.id}><CardArticle  data={card} /></a>) 
-          : <Loader />}
+          {cardData[0] !== undefined ? cardData.map((card) => <a href={`/article/${url.getSlug(card.title)}-${card.id}`} key={card.id}>
+            <CardArticle  data={card} />
+            </a>) 
+          : numberResults === '0' ?
+          <span className="card-container-null">Il n'y a aucun résultat qui correspond à votre recherche</span>
+          :
+          <Loader />}
     	  </section>
       <SelectionPage numberResults={numberResults} page={page}/>
     	</main>

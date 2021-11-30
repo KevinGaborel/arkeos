@@ -188,14 +188,14 @@ exports.addComment = async (request, response, next) => {
       return `Not connected`;
     }
 
-    if (request.body.comment.length < 10 || typeof request.body.comment.length === 'undefined'){
+    if (request.body.content.length < 10 || typeof request.body.content.length === 'undefined'){
       return 'Comment size is too short';
     }
 
     const data = {};
     data.article_id = parseInt(request.params.id, 10);
     data.author_id = request.user;
-    data.content = request.body.comment;
+    data.content = request.body.content;
 
     const comment = await CommentModel.addComment(data);
 

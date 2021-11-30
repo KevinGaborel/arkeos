@@ -16,3 +16,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+main{
+  margin-top: 5rem;
+  text-align: center;
+  text-align: -webkit-center;
+  background-color: rgb(37, 37, 37);
+}
